@@ -1,6 +1,6 @@
 [general]
 import = [
-    "~/.config/alacritty/themes/themes/kanagawa_dragon.toml"
+    "themes/themes/kanagawa_dragon.toml"
 ]
 
 [font]
@@ -17,3 +17,7 @@ blur = true
 # x = 10
 # y = 10
 
+[keyboard]
+bindings = [
+	{key = "Space", mods = "Control", chars = "\u0000"},
+]
