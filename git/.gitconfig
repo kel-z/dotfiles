@@ -1,0 +1,9 @@
+[user]
+	email = zhao0kelvin@gmail.com
+	name = Kelvin Zhao
+[core]
+	autocrlf = true
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
