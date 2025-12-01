@@ -16,8 +16,6 @@ plugins=(
 export DEFAULT_USER="$(whoami)"
 source $ZSH/oh-my-zsh.sh
 export EDITOR='nvim'
-# pyenv
-eval "$(pyenv init --path)"
 # yazi
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
