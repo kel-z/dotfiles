@@ -4,14 +4,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${USER}.zsh" ]]; t
 fi
 # zsh
 export ZSH="$HOME/.oh-my-zsh"
-export NVM_LAZY_LOAD=true
 zstyle ':omz:update' mode auto
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
   git
   zsh-autosuggestions
   zsh-vi-mode
-  zsh-nvm
   zsh-syntax-highlighting
 )
 export DEFAULT_USER="$(whoami)"
@@ -27,17 +25,17 @@ function y() {
 }
 
 # config aliases
-alias zshc="nvim ~/.zshrc"
+alias zshc="nvim ~/dotfiles/zsh/.zshrc"
 alias szsh="source ~/.zshrc"
 alias sshc="nvim ~/.ssh/config"
 
-alias nvimi="nvim ~/.config/nvim/init.lua"
+alias nvimi="nvim ~/dotfiles/nvim/.config/nvim/init.lua"
 alias nvimp="cd ~/.config/nvim/lua/plugins/"
 
-alias tmuxc="nvim ~/.tmux.conf"
+alias tmuxc="nvim ~/dotfiles/tmux/.tmux.conf"
 alias stmux="tmux source-file ~/.tmux.conf"
 
-alias alac="nvim ~/.config/alacritty/alacritty.toml"
+alias alac="nvim ~/dotfiles/alacritty/.config/alacritty/alacritty.toml"
 
 # misc aliases
 alias nv="nvim"
