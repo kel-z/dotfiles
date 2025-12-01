@@ -4,6 +4,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${USER}.zsh" ]]; t
 fi
 # zsh
 export ZSH="$HOME/.oh-my-zsh"
+export NVM_LAZY_LOAD=true
 zstyle ':omz:update' mode auto
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
