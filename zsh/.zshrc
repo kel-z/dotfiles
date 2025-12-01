@@ -1,6 +1,6 @@
 # p10k instant prompt init
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${USER}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${USER}.zsh"
 fi
 # zsh
 export ZSH="$HOME/.oh-my-zsh"
@@ -50,6 +50,10 @@ if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
 # p10k config
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+if [[ -d ~/powerlevel10k ]]; then
+  source ~/powerlevel10k/powerlevel10k.zsh-theme
+elif command -v brew >/dev/null 2>&1; then
+  source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
+fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
