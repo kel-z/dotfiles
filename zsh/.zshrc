@@ -151,6 +151,12 @@ _set_neovim_theme() {
 # main theme function
 theme() {
   local theme_name="$1"
+  # windows does not support relative path: https://github.com/alacritty/alacritty-theme/issues/25
+  if [[ "$OSTYPE" == "msys" ]] || [[ "$OSTYPE" == "cygwin" ]] || [[ "$OSTYPE" == "win32" ]] || [[ "$OSTYPE" == "linux-gnu"* && "$(uname -r)" == *"microsoft"* ]]; then
+    echo "Error: Theme switching is not supported on Windows/WSL."
+    echo "This function is designed for macOS and native Linux environments only."
+    return 1
+  fi
   # help
   if [[ "$theme_name" == "--help" ]] || [[ "$theme_name" == "-h" ]]; then
     echo "Theme Management Function"
