@@ -10,10 +10,6 @@ vim.o.mouse = "a"
 
 vim.o.showmode = false
 
-vim.schedule(function()
-	vim.o.clipboard = "unnamedplus"
-end)
-
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -63,6 +59,16 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 
 -- jq keybindings for JSON processing
 vim.keymap.set("n", "<leader>jq", ":%!jq .<CR>", { desc = "Format entire buffer with jq" })
+
+-- Quickfix navigation
+vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>", { desc = "Next quickfix item" })
+vim.keymap.set("n", "<C-p>", "<cmd>cprev<CR>", { desc = "Previous quickfix item" })
+
+-- Copy/paste with system clipboard
+vim.keymap.set({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
+vim.keymap.set("n", "gp", '"+p', { desc = "Paste from system clipboard" })
+-- - Paste in Visual with `P` to not copy selected text (`:h v_P`)
+vim.keymap.set("x", "gp", '"+P', { desc = "Paste from system clipboard" })
 
 -- [[ Basic Autocommands ]]
 
