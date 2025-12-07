@@ -39,7 +39,6 @@ alias stmux="tmux source-file ~/.tmux.conf"
 alias alac="nvim ~/dotfiles/alacritty/.config/alacritty/alacritty.toml"
 
 # misc aliases
-alias nv="nvim"
 alias o="nvim ."
 
 # zsh local
