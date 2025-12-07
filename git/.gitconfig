@@ -1,7 +1,7 @@
 [user]
-	email = zhao0kelvin@gmail.com
-	name = Kelvin Zhao
+    email = zhao0kelvin@gmail.com
+    name = Kelvin Zhao
 [pull]
-	rebase = true
+    rebase = true
 [rebase]
-	autoStash = true
+    autoStash = true
