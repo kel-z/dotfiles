@@ -43,6 +43,12 @@ vim.o.scrolloff = 10
 
 vim.o.confirm = true
 
+-- Tab settings
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -78,6 +84,32 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
 		vim.hl.on_yank()
+	end,
+})
+
+-- Quickfix list keymaps
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "qf",
+	desc = "Attach keymaps for quickfix list",
+	group = vim.api.nvim_create_augroup("kickstart-quickfix", { clear = true }),
+	callback = function()
+		vim.keymap.set("n", "dd", function()
+			local qf_list = vim.fn.getqflist()
+			local current_line_number = vim.fn.line(".")
+
+			if qf_list[current_line_number] then
+				table.remove(qf_list, current_line_number)
+				vim.fn.setqflist(qf_list, "r")
+
+				local new_line_number = math.min(current_line_number, #qf_list)
+				vim.fn.cursor(new_line_number, 1)
+			end
+		end, {
+			buffer = true,
+			noremap = true,
+			silent = true,
+			desc = "Remove quickfix item under cursor",
+		})
 	end,
 })
 
@@ -123,4 +155,4 @@ require("lazy").setup({
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=4 sts=4 sw=4 et
