@@ -255,7 +255,7 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = { "pyright" },
 			automatic_enable = {
-				exclude = { "jdtls "}
+				exclude = { "jdtls" }
 			},
 			automatic_installation = false,
 			handlers = {
@@ -271,4 +271,3 @@ return {
 		})
 	end,
 }
-
