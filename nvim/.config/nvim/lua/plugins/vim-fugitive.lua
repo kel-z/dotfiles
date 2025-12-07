@@ -1,13 +1,13 @@
 return {
-  'tpope/vim-fugitive',
-  event = 'VeryLazy',
-  keys = {
-    { '<leader>gs', '<cmd>Git<cr>', desc = 'Git status' },
-    { '<leader>gc', '<cmd>Git commit<cr>', desc = 'Git commit' },
-    { '<leader>gp', '<cmd>Git push<cr>', desc = 'Git push' },
-    { '<leader>gP', '<cmd>Git pull<cr>', desc = 'Git pull' },
-    { '<leader>gb', '<cmd>Git blame<cr>', desc = 'Git blame' },
-    { '<leader>gd', '<cmd>Gdiffsplit<cr>', desc = 'Git diff split' },
-    { '<leader>gw', '<cmd>Gwrite<cr>', desc = 'Git write' },
-  },
+	"tpope/vim-fugitive",
+	event = "VeryLazy",
+	keys = {
+		{ "<leader>gs", "<cmd>Git<cr>", desc = "Git status" },
+		{ "<leader>gc", "<cmd>Git commit<cr>", desc = "Git commit" },
+		{ "<leader>gp", "<cmd>Git push<cr>", desc = "Git push" },
+		{ "<leader>gP", "<cmd>Git pull<cr>", desc = "Git pull" },
+		{ "<leader>gb", "<cmd>Git blame<cr>", desc = "Git blame" },
+		{ "<leader>gd", "<cmd>Gdiffsplit<cr>", desc = "Git diff split" },
+		{ "<leader>gw", "<cmd>Gwrite<cr>", desc = "Git write" },
+	},
 }
