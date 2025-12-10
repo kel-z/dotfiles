@@ -12,16 +12,15 @@ return {
 				table.insert(cmd, string.format("--jvm-arg=-javaagent:%s", lombok_jar))
 			end
 
-			local root_dir = vim.fs.root(0, {'gradlew', '.git', 'mvnw', 'pom.xml', 'build.gradle'})
+			local root_dir = vim.fs.root(0, { "gradlew", ".git", "mvnw", "pom.xml", "build.gradle" })
 
 			-- keymaps
 			vim.keymap.set("n", "<leader>co", require("jdtls").organize_imports, { desc = "Organize Imports" })
 
 			require("jdtls").start_or_attach({
 				cmd = cmd,
-				root_dir = 	root_dir
+				root_dir = root_dir,
 			})
-
 		end
 
 		vim.api.nvim_create_autocmd("Filetype", {
