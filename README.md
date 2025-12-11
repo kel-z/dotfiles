@@ -15,7 +15,7 @@ brew install jq ripgrep fd fzf make markdownlint-cli2
 brew install --cask font-hack-nerd-font
 
 # omz plugins
-brew install zsh-autocomplete zsh-autosuggestion zsh-syntax-highlighting
+brew install zsh-autocomplete zsh-autosuggestions zsh-syntax-highlighting zsh-vi-mode
 
 # p10k
 brew install powerlevel10k
