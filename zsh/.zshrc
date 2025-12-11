@@ -6,11 +6,14 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 zstyle ':omz:update' mode auto
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+if command -v brew >/dev/null 2>&1; then
+  source $(brew --prefix)/opt/zsh-autocomplete/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+  source $(brew --prefix)/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+  source $(brew --prefix)/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 plugins=(
   git
-  zsh-autosuggestions
-  zsh-vi-mode
-  zsh-syntax-highlighting
 )
 export DEFAULT_USER="$(whoami)"
 source $ZSH/oh-my-zsh.sh
