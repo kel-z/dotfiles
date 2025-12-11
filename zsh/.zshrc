@@ -37,6 +37,7 @@ alias nvimp="cd ~/.config/nvim/lua/plugins/"
 alias nvimt="cd ~/.config/nvim/lua/themes/"
 
 alias tmuxc="nvim ~/dotfiles/tmux/.tmux.conf"
+alias tmuxp="cd ~/dotfiles/tmux/.tmux/plugins/"
 alias stmux="tmux source-file ~/.tmux.conf"
 
 alias alac="nvim ~/dotfiles/alacritty/.config/alacritty/alacritty.toml"
