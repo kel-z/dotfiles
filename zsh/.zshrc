@@ -10,6 +10,10 @@ if command -v brew >/dev/null 2>&1; then
   source $(brew --prefix)/opt/zsh-autocomplete/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
   source $(brew --prefix)/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+  # fix wsl errors
+  zle -N insert-unambiguous-or-complete
+  zle -N menu-search
+  zle -N recent-paths
   source $(brew --prefix)/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 plugins=(
