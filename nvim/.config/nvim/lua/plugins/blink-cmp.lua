@@ -38,17 +38,19 @@ return {
 		keymap = {
 			preset = "default",
 			["<C-space>"] = false,
+			["<C-k>"] = { "show_documentation", "hide_documentation" },
 			["<Tab>"] = {
 				function(cmp)
 					if cmp.is_visible() then
-						return cmp.select_next()
+						return cmp.accept()
 					else
 						return cmp.show()
 					end
 				end,
-				"fallback", -- If neither above, insert regular Tab
+				"fallback",
 			},
-			["<S-Tab>"] = { "select_prev", "fallback" },
+			["<C-n>"] = { "select_next", "fallback" },
+			["<C-p>"] = { "select_prev", "fallback" },
 		},
 
 		appearance = {
@@ -60,7 +62,7 @@ return {
 		completion = {
 			-- By default, you may press `<c-space>` to show the documentation.
 			-- Optionally, set `auto_show = true` to show the documentation after a delay.
-			documentation = { auto_show = true, auto_show_delay_ms = 500 },
+			documentation = { auto_show = false },
 		},
 
 		sources = {
