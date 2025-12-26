@@ -159,6 +159,18 @@ return {
 			end,
 		})
 
+		-- Diagnostic toggle
+		vim.keymap.set("n", "<leader>td", function()
+			local is_enabled = vim.diagnostic.is_enabled({ bufnr = 0 })
+			if is_enabled then
+				vim.diagnostic.enable(false)
+				print("Diagnostics disabled")
+			else
+				vim.diagnostic.enable(true)
+				print("Diagnostics enabled")
+			end
+		end, { desc = "[T]oggle [D]iagnostics" })
+
 		-- Diagnostic Config
 		-- See :help vim.diagnostic.Opts
 		vim.diagnostic.config({
