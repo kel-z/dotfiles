@@ -50,6 +50,7 @@ return {
 			{ "<leader>t", group = "[T]oggle" },
 			{ "<leader>td", desc = "[T]oggle [D]iagnostics" },
 			{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+			{ "<leader>c", group = "[C]opy" },
 		},
 	},
 }
