@@ -76,6 +76,13 @@ vim.keymap.set("n", "gp", '"+p', { desc = "Paste from system clipboard" })
 -- - Paste in Visual with `P` to not copy selected text (`:h v_P`)
 vim.keymap.set("x", "gp", '"+P', { desc = "Paste from system clipboard" })
 
+-- Copy current file path to clipboard
+vim.keymap.set("n", "<leader>cf", function()
+	local file_path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", file_path)
+	vim.notify("Copied: " .. file_path)
+end, { desc = "Copy [F]ile path" })
+
 vim.keymap.set("x", "<leader>dp", '"_dP', { desc = "Delete and paste without overwriting register" })
 vim.keymap.set("n", "<leader>dp", '"_dp', { desc = "Delete and paste without overwriting register" })
 
