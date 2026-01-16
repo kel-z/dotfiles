@@ -8,7 +8,7 @@ install with homebrew:
 
 ```bash
 # if not installed already
-brew install alacritty neovim tmux yazi git zsh
+brew install stow neovim tmux yazi git zsh
 
 # nvim plugin dependencies
 brew install jq ripgrep fd fzf make markdownlint-cli2
@@ -42,6 +42,7 @@ brew install stow
 
 git clone https://github.com/kel-z/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-stow zsh tmux alacritty nvim yazi
+stow zsh tmux nvim yazi
+stow alacritty # if using alacritty as terminal
 stow git # optional
 ```
