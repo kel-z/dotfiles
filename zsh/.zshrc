@@ -6,10 +6,6 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 zstyle ':omz:update' mode auto
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-if command -v brew >/dev/null 2>&1; then
-  source $(brew --prefix)/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source $(brew --prefix)/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
 plugins=(
   git
   vi-mode
@@ -221,4 +217,9 @@ elif command -v brew >/dev/null 2>&1; then
   source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# zsh plugins
+if command -v brew >/dev/null 2>&1; then
+  source $(brew --prefix)/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $(brew --prefix)/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
