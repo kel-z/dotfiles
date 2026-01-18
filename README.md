@@ -44,5 +44,6 @@ git clone https://github.com/kel-z/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 stow zsh tmux nvim yazi
 stow alacritty # if using alacritty as terminal
+stow opencode # if using opencode
 stow git # optional
 ```
