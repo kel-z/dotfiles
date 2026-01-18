@@ -7,19 +7,16 @@ export ZSH="$HOME/.oh-my-zsh"
 zstyle ':omz:update' mode auto
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 if command -v brew >/dev/null 2>&1; then
-  source $(brew --prefix)/opt/zsh-autocomplete/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
   source $(brew --prefix)/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-  # fix wsl errors
-  zle -N insert-unambiguous-or-complete
-  zle -N menu-search
-  zle -N recent-paths
   source $(brew --prefix)/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 plugins=(
   git
+  vi-mode
 )
 export DEFAULT_USER="$(whoami)"
+VI_MODE_SET_CURSOR=true
+KEYTIMEOUT=1
 source $ZSH/oh-my-zsh.sh
 export EDITOR='nvim'
 # yazi
