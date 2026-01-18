@@ -48,15 +48,49 @@ if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
 
-# theme map ([alacritty]: nvim)
-declare -A THEME_MAPPINGS=(
-  ["kanagawa"]="jetbrains"
-  ["solarized"]="solarized"
+# theme configuration [alias_app]=filename
+declare -A THEME_CONFIG=(
+  ["kanagawa_alacritty"]="kanagawa_dragon"
+  ["kanagawa_nvim"]="jetbrains"
+  ["solarized_alacritty"]="solarized_dark"
+  ["solarized_nvim"]="solarized"
 )
 
 # theme switching impl
 ALACRITTY_CONFIG="$HOME/dotfiles/alacritty/.config/alacritty/alacritty.toml"
 NVIM_THEMES_DIR="$HOME/dotfiles/nvim/.config/nvim/lua/themes"
+_get_theme_config() {
+  local theme_name="$1"
+  local app="$2"
+  echo "${THEME_CONFIG[${theme_name}_${app}]}"
+}
+_get_available_themes() {
+  local themes=()
+  for key in ${(k)THEME_CONFIG}; do
+    if [[ "$key" == *_alacritty ]]; then
+      themes+=("${key%_alacritty}")
+    fi
+  done
+  echo "${(u)themes[@]}"
+}
+_get_alacritty_filename() {
+  local theme_name="$1"
+  local filename
+  filename=$(_get_theme_config "$theme_name" "alacritty")
+  if [[ -z "$filename" ]]; then
+    return 1
+  fi
+  echo "themes/themes/${filename}.toml"
+}
+_get_nvim_filename() {
+  local theme_name="$1"
+  local filename
+  filename=$(_get_theme_config "$theme_name" "nvim")
+  if [[ -z "$filename" ]]; then
+    return 1
+  fi
+  echo "${filename}.lua"
+}
 _get_current_alacritty_theme() {
   local current_theme
   current_theme=$(grep -o 'themes/themes/[^"]*\.toml' "$ALACRITTY_CONFIG" 2>/dev/null | head -1)
@@ -77,28 +111,25 @@ _get_current_neovim_theme() {
 }
 _validate_theme() {
   local theme_name="$1"
-  # check if theme exists
-  if [[ -z "${THEME_MAPPINGS[$theme_name]}" ]]; then
-    echo "Error: Theme '$theme_name' not found in theme mappings."
-    echo "Available themes: ${(k)THEME_MAPPINGS}"
+  local alacritty_filename nvim_filename alacritty_path nvim_path
+  # check if theme exists in config
+  if ! _get_alacritty_filename "$theme_name" >/dev/null 2>&1; then
+    echo "Error: Theme '$theme_name' not found in theme configuration."
+    echo "Available themes: $(_get_available_themes)"
     return 1
   fi
-  # check for alacritty setup
-  local alacritty_theme_file="$ALACRITTY_CONFIG/themes/themes/${theme_name}_dragon.toml"
-  if [[ "$theme_name" == "kanagawa" ]]; then
-    alacritty_theme_file="${ALACRITTY_CONFIG%/*}/themes/themes/kanagawa_dragon.toml"
-  elif [[ "$theme_name" == "solarized" ]]; then
-    alacritty_theme_file="${ALACRITTY_CONFIG%/*}/themes/themes/solarized_dark.toml"
-  fi
-  if [[ ! -f "$alacritty_theme_file" ]]; then
-    echo "Error: Alacritty theme file not found: $alacritty_theme_file"
+  # check alacritty theme file exists
+  alacritty_filename=$(_get_alacritty_filename "$theme_name")
+  alacritty_path="${ALACRITTY_CONFIG%/*}/$alacritty_filename"
+  if [[ ! -f "$alacritty_path" ]]; then
+    echo "Error: Alacritty theme file not found: $alacritty_path"
     return 1
   fi
-  # check for nvim setup
-  local nvim_theme_name="${THEME_MAPPINGS[$theme_name]}"
-  local nvim_theme_file="$NVIM_THEMES_DIR/${nvim_theme_name}.lua"
-  if [[ ! -f "$nvim_theme_file" ]]; then
-    echo "Error: Neovim theme file not found: $nvim_theme_file"
+  # check nvim theme file exists
+  nvim_filename=$(_get_nvim_filename "$theme_name")
+  nvim_path="$NVIM_THEMES_DIR/$nvim_filename"
+  if [[ ! -f "$nvim_path" ]]; then
+    echo "Error: Neovim theme file not found: $nvim_path"
     return 1
   fi
   return 0
@@ -106,11 +137,7 @@ _validate_theme() {
 _set_alacritty_theme() {
   local theme_name="$1"
   local alacritty_theme_file
-  if [[ "$theme_name" == "kanagawa" ]]; then
-    alacritty_theme_file="themes/themes/kanagawa_dragon.toml"
-  elif [[ "$theme_name" == "solarized" ]]; then
-    alacritty_theme_file="themes/themes/solarized_dark.toml"
-  fi
+  alacritty_theme_file=$(_get_alacritty_filename "$theme_name")
   # update the theme
   sed -i '' "s|    \"themes/themes/.*\.toml\"|    \"$alacritty_theme_file\"|" "$ALACRITTY_CONFIG"
   echo "Updated Alacritty theme to: $alacritty_theme_file"
@@ -128,8 +155,8 @@ _validate_enabled_line() {
 }
 _set_neovim_theme() {
   local theme_name="$1"
-  local nvim_theme_name="${THEME_MAPPINGS[$theme_name]}"
-  local current_nvim_theme
+  local nvim_filename current_nvim_theme
+  nvim_filename=$(_get_nvim_filename "$theme_name")
   current_nvim_theme=$(_get_current_neovim_theme)
   # disable currently enabled theme (assumed line 3)
   if [[ "$current_nvim_theme" != "none" ]]; then
@@ -141,12 +168,12 @@ _set_neovim_theme() {
     echo "Disabled Neovim theme: $current_nvim_theme"
   fi
   # enable new theme
-  local new_theme_file="$NVIM_THEMES_DIR/${nvim_theme_name}.lua"
+  local new_theme_file="$NVIM_THEMES_DIR/$nvim_filename"
   if ! _validate_enabled_line "$new_theme_file"; then
     return 1
   fi
   sed -i '' '3s/enabled = false/enabled = true/' "$new_theme_file"
-  echo "Enabled Neovim theme: $nvim_theme_name"
+  echo "Enabled Neovim theme: ${nvim_filename%.lua}"
 }
 # main theme function
 theme() {
@@ -167,14 +194,16 @@ theme() {
     echo "  theme --list     List available theme mappings"
     echo "  theme --help     Show this help message"
     echo ""
-    echo "Available themes: ${(k)THEME_MAPPINGS}"
+    echo "Available themes: $(_get_available_themes)"
     return 0
   fi
   # list
   if [[ "$theme_name" == "--list" ]]; then
     echo "Available theme mappings:"
-    for theme in ${(k)THEME_MAPPINGS}; do
-      echo "  $theme -> ${THEME_MAPPINGS[$theme]}"
+    for theme in $(_get_available_themes); do
+      alacritty_file=$(_get_alacritty_filename "$theme")
+      nvim_file=$(_get_nvim_filename "$theme")
+      echo "  $theme -> alacritty: ${alacritty_file#themes/themes/}, nvim: ${nvim_file%.lua}"
     done
     return 0
   fi
@@ -187,7 +216,7 @@ theme() {
     echo "  Alacritty: $current_alacritty"
     echo "  Neovim:    $current_neovim"
     echo ""
-    echo "Available themes: ${(k)THEME_MAPPINGS}"
+    echo "Available themes: $(_get_available_themes)"
     return 0
   fi
   # validate
