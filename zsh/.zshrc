@@ -39,6 +39,8 @@ alias stmux="tmux source-file ~/.tmux.conf"
 
 alias alac="nvim ~/dotfiles/alacritty/.config/alacritty/alacritty.toml"
 
+alias occ="nvim ~/dotfiles/opencode/.config/opencode/opencode.json"
+
 # misc aliases
 alias o="nvim ."
 
