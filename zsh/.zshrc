@@ -54,6 +54,8 @@ declare -A THEME_CONFIG=(
   ["kanagawa_nvim"]="jetbrains"
   ["solarized_alacritty"]="solarized_dark"
   ["solarized_nvim"]="solarized"
+  ["carbonfox_alacritty"]="carbonfox"
+  ["carbonfox_nvim"]="carbonfox"
 )
 
 # theme switching impl
