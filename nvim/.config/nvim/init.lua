@@ -86,6 +86,9 @@ end, { desc = "Copy [F]ile path" })
 vim.keymap.set("x", "<leader>dp", '"_dP', { desc = "Delete and paste without overwriting register" })
 vim.keymap.set("n", "<leader>dp", '"_dp', { desc = "Delete and paste without overwriting register" })
 
+-- Markview toggle
+vim.keymap.set("n", "<leader>tm", "<cmd>Markview toggle<CR>", { desc = "[T]oggle [M]arkview" })
+
 -- [[ Basic Autocommands ]]
 
 -- Highlight when yanking (copying) text
