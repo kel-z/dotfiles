@@ -70,8 +70,8 @@ return {
 
 		-- See `:help telescope.builtin`
 		local builtin = require("telescope.builtin")
-		vim.keymap.set("n", "<leader>lgc", builtin.git_commits, { desc = "[L]ist [G]it [C]ommits" })
-		vim.keymap.set("n", "<leader>lgs", builtin.git_stash, { desc = "[L]ist [G]it [S]tash" })
+		vim.keymap.set("n", "<leader>glc", builtin.git_commits, { desc = "[G]it [L]ist [C]ommits" })
+		vim.keymap.set("n", "<leader>gls", builtin.git_stash, { desc = "[G]it [L]ist [S]tash" })
 		vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 		vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
