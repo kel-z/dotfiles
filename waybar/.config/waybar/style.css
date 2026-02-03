@@ -1,0 +1,81 @@
+@define-color background #282a36;
+@define-color foreground #f8f8f2;
+@define-color accent #E60012;
+@define-color currentline #44475a;
+
+window {
+    background-color: @background;
+    border: none;
+    color: @foreground;
+}
+
+* {
+    border: none;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#workspaces {
+    margin: 0 5px;
+}
+
+#workspaces button {
+    background: @currentline;
+    color: @foreground;
+    padding: 2px 8px;
+    margin: 0 2px;
+    border: none;
+}
+
+#workspaces button.focused {
+    background: @accent;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: @currentline;
+}
+
+#pulseaudio,
+#backlight,
+#network,
+#battery,
+#clock {
+    padding: 0 10px;
+    color: @foreground;
+}
+
+#pulseaudio {
+    color: #8be9fd;
+}
+
+#backlight {
+    color: #bd93f9;
+}
+
+#network {
+    color: #50fa7b;
+}
+
+#battery {
+    color: #ffb86c;
+}
+
+#battery.charging {
+    color: #50fa7b;
+}
+
+#battery.warning {
+    color: #f1fa8c;
+}
+
+#battery.critical {
+    color: #ff5555;
+}
+
+#clock {
+    color: @accent;
+}
