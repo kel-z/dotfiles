@@ -1,81 +1,79 @@
-@define-color background #282a36;
-@define-color foreground #f8f8f2;
-@define-color accent #E60012;
-@define-color currentline #44475a;
-
-window {
-    background-color: @background;
-    border: none;
-    color: @foreground;
-}
-
 * {
     border: none;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
+    border-radius: 0;
+    font-family: "Hack Nerd Font", "DejaVu Sans", sans-serif;
+    font-size: 12px;
     min-height: 0;
-    margin: 0;
-    padding: 0;
 }
 
-#workspaces {
-    margin: 0 5px;
-}
-
-#workspaces button {
-    background: @currentline;
-    color: @foreground;
-    padding: 2px 8px;
-    margin: 0 2px;
-    border: none;
-}
-
-#workspaces button.focused {
-    background: @accent;
+window#waybar {
+    background-color: #000000;
     color: #ffffff;
 }
 
-#workspaces button:hover {
-    background: @currentline;
+#workspaces {
+    background-color: #000000;
 }
 
-#pulseaudio,
-#backlight,
-#network,
-#battery,
-#clock {
+#workspaces button {
+    background-color: #000000;
+    color: #404040;
     padding: 0 10px;
-    color: @foreground;
+    min-width: 30px;
+}
+
+#workspaces button:hover {
+    background-color: #E2232A;
+    color: #ffffff;
+}
+
+#workspaces button.active {
+    background-color: #E2232A;
+    color: #ffffff;
+}
+
+#workspaces button.focused {
+    background-color: #E2232A;
+    color: #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #ff0000;
+    color: #ffffff;
 }
 
 #pulseaudio {
-    color: #8be9fd;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 15px;
 }
 
-#backlight {
-    color: #bd93f9;
-}
-
-#network {
-    color: #50fa7b;
+#pulseaudio.muted {
+    color: #404040;
 }
 
 #battery {
-    color: #ffb86c;
-}
-
-#battery.charging {
-    color: #50fa7b;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 15px;
 }
 
 #battery.warning {
-    color: #f1fa8c;
+    color: #ffff00;
 }
 
 #battery.critical {
-    color: #ff5555;
+    color: #ff0000;
+}
+
+#network {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 15px;
 }
 
 #clock {
-    color: @accent;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 15px;
 }

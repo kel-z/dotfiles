@@ -13,7 +13,22 @@ set $right Right
 set $term alacritty
 #
 # Your preferred application launcher
-set $menu wofi --show drun
+set $menu wofi --show drun --style ~/.config/wofi/style.css
+
+# Dark theme colors
+set $bg #000000
+set $fg #ffffff
+set $accent #E2232A
+set $accent_bright #ff4040
+set $inactive #404040
+set $text #ffffff
+set $urgent #ff0000
+
+# Font configuration
+font pango:DejaVu Sans 10
+
+# Border configuration
+default_border pixel 1
 
 ### Output configuration
 #
@@ -53,6 +68,7 @@ input "type:touchpad" {
 
 input "type:keyboard" {
     xkb_layout us
+    xkb_options "caps:escape"
 }
 
 
@@ -197,15 +213,16 @@ mode "resize" {
 bindsym $mod+R mode "resize"
 
 #
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-# bar disabled - using waybar instead
-exec waybar
+# Window colors (no borders):
+# class                 border  backgr. text    indicator child_border
+client.focused          $bg $bg $text $accent $bg
+client.focused_inactive $accent $accent $text $inactive $bg
+client.unfocused        $bg $bg $inactive $inactive $bg
+client.urgent           $bg $urgent $bg $urgent $bg
 
 #
 # Autostart applications
 #
-exec alacritty
+exec waybar
 
 include /etc/sway/config.d/*
