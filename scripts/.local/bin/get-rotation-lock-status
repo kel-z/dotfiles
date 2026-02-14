@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ -f "$HOME/.rotation_lock" ]; then
+    echo ""
+else
+    echo ""
+fi

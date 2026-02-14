@@ -1,0 +1,6 @@
+#!/bin/bash
+if pgrep -f "wvkbd-deskintl" > /dev/null 2>&1; then
+    pkill -f "wvkbd-deskintl"
+else
+    wvkbd-deskintl -L 400
+fi

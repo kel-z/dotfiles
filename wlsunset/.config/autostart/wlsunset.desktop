@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=$HOME/.local/bin/wlsunset-start.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Wlsunset
+Comment=Wayland color temperature adjustment

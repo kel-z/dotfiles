@@ -45,11 +45,38 @@ window#waybar {
 #pulseaudio {
     background-color: #000000;
     color: #ffffff;
-    padding: 0 15px;
+    padding: 0 10px;
 }
 
 #pulseaudio.muted {
     color: #404040;
+}
+
+#pulseaudio-slider {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 10px;
+    min-width: 100px;
+}
+
+#pulseaudio-slider slider {
+    min-height: 2px;
+    min-width: 2px;
+    background-color: #ffffff;
+    border-radius: 0;
+}
+
+#pulseaudio-slider trough {
+    min-height: 2px;
+    min-width: 80px;
+    border-radius: 0;
+    background-color: #404040;
+}
+
+#pulseaudio-slider highlight {
+    min-height: 2px;
+    border-radius: 0;
+    background-color: #E2232A;
 }
 
 #battery {
@@ -76,4 +103,34 @@ window#waybar {
     background-color: #000000;
     color: #ffffff;
     padding: 0 15px;
+}
+
+#temperature {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 15px;
+}
+
+#temperature.critical {
+    color: #E2232A;
+}
+
+#custom-virtkbd {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 12px;
+    margin: 0 2px;
+    font-size: 16px;
+    min-width: 40px;
+    min-height: 30px;
+}
+
+#custom-rotation-lock {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 12px;
+    margin: 0 2px;
+    font-size: 16px;
+    min-width: 40px;
+    min-height: 30px;
 }
