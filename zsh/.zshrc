@@ -44,6 +44,8 @@ alias occ="nvim ~/dotfiles/opencode/.config/opencode/opencode.json"
 # misc aliases
 alias o="nvim ."
 
+
+
 # zsh local
 alias zshcl="nvim ~/.zshrc.local"
 if [[ -f ~/.zshrc.local ]]; then
@@ -143,7 +145,7 @@ _set_alacritty_theme() {
   local alacritty_theme_file
   alacritty_theme_file=$(_get_alacritty_filename "$theme_name")
   # update the theme
-  sed -i '' "s|    \"themes/themes/.*\.toml\"|    \"$alacritty_theme_file\"|" "$ALACRITTY_CONFIG"
+  sed -i "s|    \"themes/themes/.*\.toml\"|    \"$alacritty_theme_file\"|" "$ALACRITTY_CONFIG"
   echo "Updated Alacritty theme to: $alacritty_theme_file"
 }
 _validate_enabled_line() {
@@ -168,7 +170,7 @@ _set_neovim_theme() {
     if ! _validate_enabled_line "$current_theme_file"; then
       return 1
     fi
-    sed -i '' '3s/enabled = true/enabled = false/' "$current_theme_file"
+    sed -i '3s/enabled = true/enabled = false/' "$current_theme_file"
     echo "Disabled Neovim theme: $current_nvim_theme"
   fi
   # enable new theme
@@ -176,7 +178,7 @@ _set_neovim_theme() {
   if ! _validate_enabled_line "$new_theme_file"; then
     return 1
   fi
-  sed -i '' '3s/enabled = false/enabled = true/' "$new_theme_file"
+  sed -i '3s/enabled = false/enabled = true/' "$new_theme_file"
   echo "Enabled Neovim theme: ${nvim_filename%.lua}"
 }
 # main theme function

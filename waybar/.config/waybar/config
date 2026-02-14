@@ -8,10 +8,14 @@
     ],
     "modules-center": [],
     "modules-right": [
+        "temperature",
         "pulseaudio",
+        "pulseaudio/slider",
         "battery",
         "network",
-        "clock"
+        "clock",
+        "custom/rotation-lock",
+        "custom/virtkbd"
     ],
     "sway/workspaces": {
         "format": "{name}",
@@ -31,6 +35,11 @@
             "car": "",
             "default": ["", "", ""]
         }
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
     },
     "battery": {
         "format": "{icon} {capacity}%",
@@ -60,5 +69,23 @@
         "tooltip": true,
         "tooltip-format": "{:%a %b %d %Y  %H:%M:%S}"
     },
-    "transition-duration": 200
+    "temperature": {
+        "thermal-zone": 0,
+        "format": "{temperatureC}°C",
+        "format-critical": "{temperatureC}°C",
+        "tooltip": true,
+        "critical-threshold": 80
+    },
+    "transition-duration": 200,
+    "custom/virtkbd": {
+        "format": "",
+        "tooltip": "Toggle virtual keyboard",
+        "on-click": "~/.local/bin/toggle-virtkbd"
+    },
+    "custom/rotation-lock": {
+        "tooltip": "Toggle rotation lock",
+        "on-click": "~/.local/bin/toggle-rotation-lock",
+        "exec": "~/.local/bin/get-rotation-lock-status",
+        "interval": 1
+    }
 }

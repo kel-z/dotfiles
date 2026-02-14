@@ -33,7 +33,7 @@ default_border pixel 1
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/.config/sway/backgrounds/2025-08-15_20-31-44_000.jpeg fill
 #
 # Example configuration:
 #
@@ -69,6 +69,11 @@ input "type:touchpad" {
 input "type:keyboard" {
     xkb_layout us
     xkb_options "caps:escape"
+}
+
+input "1386:20656:Wacom_Pen_and_multitouch_sensor_Pen" {
+    scroll_method "on_button_down"
+    scroll_button 331
 }
 
 
@@ -224,5 +229,9 @@ client.urgent           $bg $urgent $bg $urgent $bg
 # Autostart applications
 #
 exec waybar
+exec ~/.local/bin/sway-rotate-screen.sh
 
 include /etc/sway/config.d/*
+
+# Tablet mode - auto-launch virtual keyboard
+include tablet-mode.conf
