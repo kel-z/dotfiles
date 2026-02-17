@@ -6,14 +6,20 @@
     "modules-left": [
         "sway/workspaces"
     ],
-    "modules-center": [],
-    "modules-right": [
-        "temperature",
+    "modules-center": [
+        "backlight",
+        "backlight/slider",
         "pulseaudio",
         "pulseaudio/slider",
-        "battery",
+        "custom/mic",
+    ],
+    "modules-right": [
+        "temperature",
+        "cpu",
+        "memory",
         "network",
         "clock",
+        "battery",
         "custom/rotation-lock",
         "custom/virtkbd"
     ],
@@ -23,8 +29,8 @@
         "tooltip": false
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "婢 muted",
+        "format": "{icon}  {volume}%",
+        "format-muted": " muted",
         "tooltip": true,
         "format-icons": {
             "headphone": "",
@@ -54,7 +60,7 @@
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        "format-wifi": "{icon} {essid}",
+        "format-wifi": "{icon}  {essid}",
         "format-ethernet": "{icon}",
         "format-disconnected": "",
         "tooltip": true,
@@ -76,6 +82,25 @@
         "tooltip": true,
         "critical-threshold": 80
     },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon}  {percent}%",
+        "format-icons": [""],
+        "tooltip": true
+    },
+    "backlight/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+    },
+    "cpu": {
+        "format": "CPU: {usage}%",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "Mem: {percentage}%",
+        "tooltip": true
+    },
     "transition-duration": 200,
     "custom/virtkbd": {
         "format": "",
@@ -86,6 +111,13 @@
         "tooltip": "Toggle rotation lock",
         "on-click": "~/.local/bin/toggle-rotation-lock",
         "exec": "~/.local/bin/get-rotation-lock-status",
+        "interval": 1
+    },
+    "custom/mic": {
+        "format": "{}",
+        "tooltip": "Toggle microphone",
+        "on-click": "~/.local/bin/toggle-mic",
+        "exec": "~/.local/bin/get-mic-status",
         "interval": 1
     }
 }

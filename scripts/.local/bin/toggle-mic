@@ -1,0 +1,16 @@
+#!/bin/bash
+# Toggle microphone mute state
+DEFAULT_SOURCE="alsa_input.pci-0000_00_1f.3.analog-stereo"
+
+# Check current mute status
+mute_status=$(pactl get-source-mute "$DEFAULT_SOURCE" | grep -o "yes")
+
+if [ "$mute_status" = "yes" ]; then
+    # Unmute
+    pactl set-source-mute "$DEFAULT_SOURCE" false
+    echo "Microphone unmuted"
+else
+    # Mute  
+    pactl set-source-mute "$DEFAULT_SOURCE" true
+    echo "Microphone muted"
+fi
