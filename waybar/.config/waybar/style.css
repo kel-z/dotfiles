@@ -79,6 +79,45 @@ window#waybar {
     background-color: #E2232A;
 }
 
+#backlight-slider {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 10px;
+    min-width: 100px;
+}
+
+#backlight-slider slider {
+    min-height: 2px;
+    min-width: 2px;
+    background-color: #ffffff;
+    border-radius: 0;
+}
+
+#backlight-slider trough {
+    min-height: 2px;
+    min-width: 80px;
+    border-radius: 0;
+    background-color: #404040;
+}
+
+#backlight-slider highlight {
+    min-height: 2px;
+    border-radius: 0;
+    background-color: #E2232A;
+}
+
+#cpu {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 15px;
+}
+
+#memory {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 15px;
+}
+
 #battery {
     background-color: #000000;
     color: #ffffff;
@@ -134,3 +173,12 @@ window#waybar {
     min-width: 40px;
     min-height: 30px;
 }
+
+#custom-mic {
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 16px;
+    min-width: 40px;
+    min-height: 30px;
+}
+

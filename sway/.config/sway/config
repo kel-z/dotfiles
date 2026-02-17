@@ -46,10 +46,10 @@ output * bg ~/.config/sway/backgrounds/2025-08-15_20-31-44_000.jpeg fill
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
+         timeout 300 'swaylock -f --image ~/.config/sway/backgrounds/rn_image_picker_lib_temp_2c0543b3-35e1-46eb-82b5-539a6aa1a753.jpg' \
          timeout 600 'swaymsg "output * power off"' \
                resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000'
+         before-sleep 'swaylock -f --image ~/.config/sway/backgrounds/rn_image_picker_lib_temp_2c0543b3-35e1-46eb-82b5-539a6aa1a753.jpg'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -112,6 +112,9 @@ input "1386:20656:Wacom_Pen_and_multitouch_sensor_Pen" {
     bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
     bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
     bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+    # Microphone control
+    bindsym XF86AudioMicMute exec ~/.local/bin/toggle-mic
 
     # Brightness control
     bindsym XF86MonBrightnessUp exec brightnessctl set +5%
@@ -230,8 +233,12 @@ client.urgent           $bg $urgent $bg $urgent $bg
 #
 exec waybar
 exec ~/.local/bin/sway-rotate-screen.sh
+exec wlsunset
 
 include /etc/sway/config.d/*
 
 # Tablet mode - auto-launch virtual keyboard
 include tablet-mode.conf
+
+# Bind Print Screen to Flameshot
+bindsym Print exec flameshot gui
