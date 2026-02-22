@@ -95,6 +95,9 @@ input "1386:20656:Wacom_Pen_and_multitouch_sensor_Pen" {
     # Start your launcher
     bindsym $mod+d exec $menu
 
+    # Clipboard history picker
+    bindsym $mod+Shift+v exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -234,6 +237,8 @@ client.urgent           $bg $urgent $bg $urgent $bg
 exec waybar
 exec ~/.local/bin/sway-rotate-screen.sh
 exec wlsunset
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
 
 include /etc/sway/config.d/*
 

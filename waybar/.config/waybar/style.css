@@ -12,11 +12,9 @@ window#waybar {
 }
 
 #workspaces {
-    background-color: #000000;
 }
 
 #workspaces button {
-    background-color: #000000;
     color: #404040;
     padding: 0 10px;
     min-width: 30px;
@@ -43,7 +41,6 @@ window#waybar {
 }
 
 #pulseaudio {
-    background-color: #000000;
     color: #ffffff;
     padding: 0 10px;
 }
@@ -53,7 +50,6 @@ window#waybar {
 }
 
 #pulseaudio-slider {
-    background-color: #000000;
     color: #ffffff;
     padding: 0 10px;
     min-width: 100px;
@@ -80,7 +76,6 @@ window#waybar {
 }
 
 #backlight-slider {
-    background-color: #000000;
     color: #ffffff;
     padding: 0 10px;
     min-width: 100px;
@@ -107,19 +102,16 @@ window#waybar {
 }
 
 #cpu {
-    background-color: #000000;
     color: #ffffff;
     padding: 0 15px;
 }
 
 #memory {
-    background-color: #000000;
     color: #ffffff;
     padding: 0 15px;
 }
 
 #battery {
-    background-color: #000000;
     color: #ffffff;
     padding: 0 15px;
 }
@@ -133,19 +125,16 @@ window#waybar {
 }
 
 #network {
-    background-color: #000000;
     color: #ffffff;
     padding: 0 15px;
 }
 
 #clock {
-    background-color: #000000;
     color: #ffffff;
     padding: 0 15px;
 }
 
 #temperature {
-    background-color: #000000;
     color: #ffffff;
     padding: 0 15px;
 }
@@ -155,7 +144,6 @@ window#waybar {
 }
 
 #custom-virtkbd {
-    background-color: #000000;
     color: #ffffff;
     padding: 0 12px;
     margin: 0 2px;
@@ -165,7 +153,6 @@ window#waybar {
 }
 
 #custom-rotation-lock {
-    background-color: #000000;
     color: #ffffff;
     padding: 0 12px;
     margin: 0 2px;
@@ -175,7 +162,6 @@ window#waybar {
 }
 
 #custom-mic {
-    background-color: #000000;
     color: #ffffff;
     font-size: 16px;
     min-width: 40px;
