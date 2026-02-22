@@ -4,7 +4,7 @@ kel-z dotfiles
 
 ## dependencies
 
-install with homebrew:
+install with homebrew (macOS):
 
 ```bash
 # if not installed already
@@ -19,6 +19,25 @@ brew install zsh-autosuggestions zsh-syntax-highlighting
 
 # p10k
 brew install powerlevel10k
+```
+
+install with pacman (Arch Linux):
+
+```bash
+sudo pacman -S stow neovim tmux yazi git zsh \
+  jq ripgrep fd fzf make \
+  sway waybar wofi wlsunset flameshot \
+  swaylock swayidle wl-clipboard cliphist grim \
+  brightnessctl pipewire pipewire-pulse \
+  iio-sensor-proxy \
+  zsh-autosuggestions zsh-syntax-highlighting \
+  ttf-hack-nerd-fonts ttf-dejavu
+```
+
+AUR packages (e.g. with `yay`):
+
+```bash
+yay -S wvkbd-deskintl powerlevel10k
 ```
 
 install oh-my-zsh:
@@ -47,9 +66,12 @@ stow alacritty # if using alacritty as terminal
 stow opencode # if using opencode
 stow git # optional
 
-# archlinux
+# arch linux
 stow sway
 stow waybar
 stow wlsunset
+stow wofi
+stow gtk
+stow flameshot
 stow scripts
 ```

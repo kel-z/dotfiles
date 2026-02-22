@@ -11,7 +11,7 @@
         "backlight/slider",
         "pulseaudio",
         "pulseaudio/slider",
-        "custom/mic",
+        "custom/mic"
     ],
     "modules-right": [
         "temperature",
@@ -39,7 +39,11 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         }
     },
     "pulseaudio/slider": {
@@ -57,7 +61,13 @@
             "warning": 30,
             "critical": 15
         },
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "network": {
         "format-wifi": "{icon}  {essid}",
@@ -65,10 +75,16 @@
         "format-disconnected": "",
         "tooltip": true,
         "format-icons": {
-            "wifi": ["", "", "", ""],
+            "wifi": [
+                "",
+                "",
+                "",
+                ""
+            ],
             "ethernet": "",
             "disconnected": ""
-        }
+        },
+        "max-length": 20
     },
     "clock": {
         "format": "{:%b %d %H:%M}",
@@ -76,7 +92,6 @@
         "tooltip-format": "{:%a %b %d %Y  %H:%M:%S}"
     },
     "temperature": {
-        "thermal-zone": 0,
         "format": "{temperatureC}°C",
         "format-critical": "{temperatureC}°C",
         "tooltip": true,
@@ -85,7 +100,9 @@
     "backlight": {
         "device": "intel_backlight",
         "format": "{icon}  {percent}%",
-        "format-icons": [""],
+        "format-icons": [
+            ""
+        ],
         "tooltip": true
     },
     "backlight/slider": {
@@ -94,11 +111,11 @@
         "orientation": "horizontal"
     },
     "cpu": {
-        "format": "CPU: {usage}%",
+        "format": " {usage}%",
         "tooltip": true
     },
     "memory": {
-        "format": "Mem: {percentage}%",
+        "format": " {percentage}%",
         "tooltip": true
     },
     "transition-duration": 200,
@@ -111,13 +128,13 @@
         "tooltip": "Toggle rotation lock",
         "on-click": "~/.local/bin/toggle-rotation-lock",
         "exec": "~/.local/bin/get-rotation-lock-status",
-        "interval": 1
+        "interval": 5
     },
     "custom/mic": {
         "format": "{}",
         "tooltip": "Toggle microphone",
         "on-click": "~/.local/bin/toggle-mic",
         "exec": "~/.local/bin/get-mic-status",
-        "interval": 1
+        "interval": 5
     }
 }

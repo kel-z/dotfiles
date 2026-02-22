@@ -1,0 +1,109 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    "modules-left": [],
+    "modules-center": [
+        "backlight",
+        "backlight/slider",
+        "pulseaudio",
+        "pulseaudio/slider",
+        "custom/mic"
+    ],
+    "modules-right": [
+        "network",
+        "battery",
+        "custom/rotation-lock",
+        "custom/virtkbd"
+    ],
+    "network": {
+        "format-wifi": "{icon}  {essid}",
+        "format-ethernet": "{icon}",
+        "format-disconnected": "",
+        "tooltip": true,
+        "format-icons": {
+            "wifi": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "ethernet": "",
+            "disconnected": ""
+        },
+        "max-length": 20
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-charging": "{icon} {capacity}%",
+        "format-plugged": "{icon} {capacity}%",
+        "format-alt": "{icon} {capacity}%",
+        "tooltip": true,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "custom/virtkbd": {
+        "format": "",
+        "tooltip": "Toggle virtual keyboard",
+        "on-click": "~/.local/bin/toggle-virtkbd"
+    },
+    "custom/rotation-lock": {
+        "tooltip": "Toggle rotation lock",
+        "on-click": "~/.local/bin/toggle-rotation-lock",
+        "exec": "~/.local/bin/get-rotation-lock-status",
+        "interval": 5
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon}  {percent}%",
+        "format-icons": [
+            ""
+        ],
+        "tooltip": true
+    },
+    "backlight/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+    },
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": " muted",
+        "tooltip": true,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        }
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+    },
+    "custom/mic": {
+        "format": "{}",
+        "tooltip": "Toggle microphone",
+        "on-click": "~/.local/bin/toggle-mic",
+        "exec": "~/.local/bin/get-mic-status",
+        "interval": 5
+    }
+}
