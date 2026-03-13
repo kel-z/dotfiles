@@ -60,6 +60,10 @@ declare -A THEME_CONFIG=(
   ["solarized_nvim"]="solarized"
   ["carbonfox_alacritty"]="carbonfox"
   ["carbonfox_nvim"]="carbonfox"
+  ["catppuccin_alacritty"]="catppuccin_mocha"
+  ["catppuccin_nvim"]="catppuccin"
+  ["deus_alacritty"]="deus"
+  ["deus_nvim"]="deus"
 )
 
 # theme switching impl
