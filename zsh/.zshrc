@@ -62,8 +62,6 @@ declare -A THEME_CONFIG=(
   ["carbonfox_nvim"]="carbonfox"
   ["catppuccin_alacritty"]="catppuccin_mocha"
   ["catppuccin_nvim"]="catppuccin"
-  ["deus_alacritty"]="deus"
-  ["deus_nvim"]="deus"
 )
 
 # theme switching impl
