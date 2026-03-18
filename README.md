@@ -37,7 +37,7 @@ sudo pacman -S stow neovim tmux yazi git zsh \
 AUR packages (e.g. with `yay`):
 
 ```bash
-yay -S wvkbd-deskintl powerlevel10k
+yay -S wvkbd-deskintl powerlevel10k kanata
 ```
 
 install oh-my-zsh:
@@ -67,6 +67,14 @@ stow opencode # if using opencode
 stow git # optional
 
 # arch linux
+stow kanata
+# kanata (one-time system setup)
+sudo groupadd uinput
+sudo usermod -aG input,uinput $USER
+sudo tee /etc/udev/rules.d/99-uinput.rules <<< 'KERNEL=="uinput", GROUP="uinput", MODE="0660", OPTIONS+="static_node=uinput"'
+sudo udevadm control --reload-rules && sudo udevadm trigger
+# log out and back in for group membership to take effect
+
 stow sway
 stow waybar
 stow wlsunset

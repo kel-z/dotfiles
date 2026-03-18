@@ -1,0 +1,11 @@
+(defsrc
+  caps h j k l rshift
+)
+
+(deflayer base
+  (layer-while-held nav) h j k l rshift
+)
+
+(deflayer nav
+  _ left down up right esc
+)
