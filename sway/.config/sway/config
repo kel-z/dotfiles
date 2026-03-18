@@ -68,7 +68,6 @@ input "type:touchpad" {
 
 input "type:keyboard" {
     xkb_layout us
-    xkb_options "caps:escape"
 }
 
 input "1386:20656:Wacom_Pen_and_multitouch_sensor_Pen" {
@@ -234,6 +233,7 @@ client.urgent           $bg $urgent $bg $urgent $bg
 #
 # Autostart applications
 #
+exec kanata --cfg ~/.config/kanata/kanata.kbd
 exec waybar
 exec ~/.local/bin/sway-rotate-screen.sh
 exec wlsunset
