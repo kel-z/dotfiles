@@ -80,6 +80,11 @@ return {
 		end, { desc = "[S]earch [F]iles (including hidden)" })
 		vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+		vim.keymap.set("v", "<leader>sw", function()
+			vim.cmd('noau normal! "vy')
+			local text = vim.fn.getreg("v")
+			builtin.grep_string({ search = text })
+		end, { desc = "[S]earch selection [W]ord (grep)" })
 		vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 		vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
@@ -94,6 +99,16 @@ return {
 				previewer = false,
 			}))
 		end, { desc = "[/] Fuzzily search in current buffer" })
+
+		vim.keymap.set("v", "<leader>/", function()
+			vim.cmd('noau normal! "vy')
+			local text = vim.fn.getreg("v")
+			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+				winblend = 10,
+				previewer = false,
+				default_text = text,
+			}))
+		end, { desc = "[/] Search selection in current buffer" })
 
 		-- It's also possible to pass additional configuration options.
 		--  See `:help telescope.builtin.live_grep()` for information about particular keys

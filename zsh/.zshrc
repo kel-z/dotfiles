@@ -13,6 +13,7 @@ plugins=(
 export DEFAULT_USER="$(whoami)"
 VI_MODE_SET_CURSOR=true
 KEYTIMEOUT=1
+TERM=xterm-256color
 source $ZSH/oh-my-zsh.sh
 export EDITOR='nvim'
 # yazi
