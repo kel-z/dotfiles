@@ -6,6 +6,8 @@ return {
 		{ "<leader>gc", "<cmd>Git commit<cr>", desc = "Git commit" },
 		{ "<leader>gp", "<cmd>Git push<cr>", desc = "Git push" },
 		{ "<leader>gP", "<cmd>Git pull<cr>", desc = "Git pull" },
+		{ "<leader>glc", "<cmd>Git log --oneline<cr>", desc = "[G]it [L]ist [C]ommits (oneline)" },
+		{ "<leader>glC", "<cmd>Git log<cr>", desc = "[G]it [L]ist [C]ommits (full)" },
 		{ "<leader>gb", "<cmd>Git blame<cr>", desc = "Git blame" },
 		{ "<leader>gd", "<cmd>Gvdiffsplit<cr>", desc = "Git diff" },
 		{ "<leader>gD", "<cmd>Gvdiffsplit!<cr>", desc = "Git 3-way diff" },
