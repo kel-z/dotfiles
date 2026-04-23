@@ -64,8 +64,9 @@ return {
 
 			{ "<leader>g", group = "[G]it" },
 			{ "<leader>gl", group = "[G]it [L]ist" },
-			{ "<leader>glc", desc = "[G]it [L]ist [C]ommits (oneline)" },
-			{ "<leader>glC", desc = "[G]it [L]ist [C]ommits (full)" },
+			{ "<leader>glc", desc = "[G]it [L]ist [C]ommits" },
+			{ "<leader>glC", desc = "[G]it [L]ist [C]ommits (patch)" },
+			{ "<leader>glg", desc = "[G]it [L]ist [G]raph" },
 			{ "<leader>gls", desc = "[G]it [L]ist [S]tash" },
 
 			{ "<leader>r", group = "[R]eplace/Substitute" },
