@@ -11,7 +11,7 @@ install with homebrew (macOS):
 brew install stow neovim tmux yazi git zsh
 
 # nvim plugin dependencies
-brew install jq ripgrep fd fzf make markdownlint-cli2
+brew install jq ripgrep fd fzf make markdownlint-cli2 tree-sitter-cli
 brew install --cask font-hack-nerd-font
 
 # omz plugins
@@ -25,7 +25,7 @@ install with pacman (Arch Linux):
 
 ```bash
 sudo pacman -S stow neovim tmux yazi git zsh \
-  jq ripgrep fd fzf make \
+  jq ripgrep fd fzf make tree-sitter-cli \
   sway waybar wofi wlsunset flameshot \
   swaylock swayidle wl-clipboard cliphist grim \
   brightnessctl pipewire pipewire-pulse \
