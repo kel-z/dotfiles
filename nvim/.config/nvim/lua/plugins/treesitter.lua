@@ -20,7 +20,6 @@ return {
 			"java",
 			"javascript",
 			"json",
-			"jsonc",
 			"lua",
 			"luadoc",
 			"make",
