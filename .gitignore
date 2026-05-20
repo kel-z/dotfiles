@@ -23,3 +23,8 @@ id_ed25519*
 
 # Ignore logs
 *.log
+
+# Ignore nvim files
+Session.vim
+.Session.vim
+nvim/.config/nvim/lazy-lock.json
