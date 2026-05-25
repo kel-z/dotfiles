@@ -10,6 +10,10 @@ install with homebrew (macOS):
 # if not installed already
 brew install stow neovim tmux yazi git zsh
 
+# tmux-thumbs dependency
+brew install rustup-init
+rustup-init -y
+
 # nvim plugin dependencies
 brew install jq ripgrep fd fzf make markdownlint-cli2 tree-sitter-cli
 brew install --cask font-hack-nerd-font
@@ -31,7 +35,10 @@ sudo pacman -S stow neovim tmux yazi git zsh \
   brightnessctl pipewire pipewire-pulse \
   iio-sensor-proxy \
   zsh-autosuggestions zsh-syntax-highlighting \
-  ttf-hack-nerd-fonts ttf-dejavu
+  ttf-hack-nerd-fonts ttf-dejavu rustup
+
+# tmux-thumbs dependency
+rustup default stable
 ```
 
 AUR packages (e.g. with `yay`):
