@@ -40,7 +40,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugi
 submodules:
 
 ```bash
-git submodule update --init --recursive --remote
+git submodule update --init --recursive
 ```
 
 ## setup
