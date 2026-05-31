@@ -4,28 +4,16 @@ kel-z dotfiles
 
 ## dependencies
 
-install with homebrew (macOS):
+homebrew (macOS):
 
 ```bash
-# if not installed already
 brew install stow neovim tmux yazi git zsh
-
-# tmux-thumbs dependency
-brew install rustup-init
-rustup-init -y
-
-# nvim plugin dependencies
 brew install jq ripgrep fd fzf make markdownlint-cli2 tree-sitter-cli
 brew install --cask font-hack-nerd-font
-
-# omz plugins
-brew install zsh-autosuggestions zsh-syntax-highlighting
-
-# p10k
 brew install powerlevel10k
 ```
 
-install with pacman (Arch Linux):
+pacman (Arch Linux):
 
 ```bash
 sudo pacman -S stow neovim tmux yazi git zsh \
@@ -34,26 +22,22 @@ sudo pacman -S stow neovim tmux yazi git zsh \
   swaylock swayidle wl-clipboard cliphist grim \
   brightnessctl pipewire pipewire-pulse \
   iio-sensor-proxy \
-  zsh-autosuggestions zsh-syntax-highlighting \
   ttf-hack-nerd-fonts ttf-dejavu rustup
 
-# tmux-thumbs dependency
-rustup default stable
-```
-
-AUR packages (e.g. with `yay`):
-
-```bash
 yay -S wvkbd-deskintl powerlevel10k kanata
 ```
 
-install oh-my-zsh:
+oh-my-zsh:
 
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 ```
 
-install submodules:
+submodules:
 
 ```bash
 git submodule update --init --recursive --remote
@@ -64,29 +48,24 @@ git submodule update --init --recursive --remote
 clone and stow (assumes no existing config):
 
 ```bash
-brew install stow
-
 git clone https://github.com/kel-z/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 stow zsh tmux nvim yazi
-stow alacritty # if using alacritty as terminal
-stow opencode # if using opencode
-stow git # optional
+stow alacritty   # if using alacritty
+stow opencode    # if using opencode
+stow claude      # if using claude code
+stow git         # optional
+```
 
-# arch linux
-stow kanata
-# kanata (one-time system setup)
+arch linux:
+
+```bash
+stow sway waybar wlsunset wofi gtk flameshot scripts kanata
+
+# kanata
 sudo groupadd uinput
 sudo usermod -aG input,uinput $USER
 sudo tee /etc/udev/rules.d/99-uinput.rules <<< 'KERNEL=="uinput", GROUP="uinput", MODE="0660", OPTIONS+="static_node=uinput"'
 sudo udevadm control --reload-rules && sudo udevadm trigger
-# log out and back in for group membership to take effect
-
-stow sway
-stow waybar
-stow wlsunset
-stow wofi
-stow gtk
-stow flameshot
-stow scripts
+# log out and back in for group membership
 ```
