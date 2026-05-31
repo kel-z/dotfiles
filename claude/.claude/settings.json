@@ -1,0 +1,21 @@
+{
+  "model": "opus",
+  "skipDangerousModePermissionPrompt": true,
+  "editorMode": "vim",
+  "verbose": true,
+  "autoCompactEnabled": false,
+  "permissions": {
+    "deny": [
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/*.env)",
+      "Read(**/*.env.*)"
+    ],
+    "ask": [
+      "Bash(rm:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}
