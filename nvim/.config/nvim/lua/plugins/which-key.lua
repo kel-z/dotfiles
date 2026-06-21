@@ -79,6 +79,9 @@ return {
 			{ "<leader>tb", desc = "[T]oggle [B]lame" },
 			{ "<leader>tw", desc = "[T]oggle [W]ord diff" },
 
+			{ "<leader>m", group = "[M]arkdown" },
+			{ "<leader>mp", desc = "[M]arkdown [P]review toggle" },
+
 			{ "<leader>cf", desc = "[C]opy [F]ile path" },
 			{ "<leader>dp", desc = "[D]elete and [P]aste" },
 
