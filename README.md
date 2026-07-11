@@ -22,7 +22,7 @@ sudo pacman -S stow neovim tmux yazi git zsh \
   swaylock swayidle wl-clipboard cliphist grim \
   brightnessctl pipewire pipewire-pulse \
   iio-sensor-proxy \
-  ttf-hack-nerd-fonts ttf-dejavu rustup
+  ttf-hack-nerd ttf-dejavu rustup
 
 yay -S wvkbd-deskintl powerlevel10k kanata
 ```
