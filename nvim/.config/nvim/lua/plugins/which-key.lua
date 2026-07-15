@@ -49,6 +49,7 @@ return {
 			{ "<leader>sf", desc = "[S]earch [F]iles" },
 			{ "<leader>sF", desc = "[S]earch [F]iles (including hidden)" },
 			{ "<leader>sg", desc = "[S]earch by [G]rep" },
+			{ "<leader>sG", desc = "[S]earch by [G]rep (including hidden)" },
 			{ "<leader>sw", desc = "[S]earch current [W]ord" },
 			{ "<leader>s/", desc = "[S]earch [/] in Open Files" },
 			{ "<leader>ss", desc = "[S]earch [S]elect Telescope" },
