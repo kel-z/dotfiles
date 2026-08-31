@@ -1,0 +1,10 @@
+#!/bin/sh
+# Guard: don't spawn if already running
+if pgrep -f "pavucontrol" > /dev/null 2>&1; then
+    swaymsg '[app_id="pavucontrol"] focus'
+    exit 0
+fi
+
+pavucontrol &
+sleep 0.3
+swaymsg '[app_id="pavucontrol"] floating enable, move position center, border none'
