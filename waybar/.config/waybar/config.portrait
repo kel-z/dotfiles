@@ -79,6 +79,7 @@
     "pulseaudio": {
         "format": "{icon}  {volume}%",
         "format-muted": " muted",
+        "on-click": "~/.local/bin/open-mixer",
         "tooltip": true,
         "format-icons": {
             "headphone": "",
