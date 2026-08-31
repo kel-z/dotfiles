@@ -1,11 +1,93 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "share": "disabled",
+  "provider": {
+    "gx10": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "GX10",
+      "options": {
+        "baseURL": "http://{env:GX10_HOST}:8000/v1"
+      },
+      "models": {
+        "default": {
+          "name": "Default",
+          "tool_call": true,
+          "reasoning": true,
+          "temperature": true,
+          "attachment": true,
+          "interleaved": "reasoning",
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
+          },
+          "limit": {
+            "context": 262144,
+            "output": 32768
+          },
+          "variants": {
+            "max": {
+              "chat_template_kwargs": {
+                "thinking": true,
+                "reasoning_effort": "max"
+              }
+            },
+            "xhigh": {
+              "chat_template_kwargs": {
+                "thinking": true,
+                "reasoning_effort": "xhigh"
+              }
+            },
+            "thinking off": {
+              "chat_template_kwargs": {
+                "thinking": false
+              }
+            }
+          }
+        },
+        "default-1m": {
+          "id": "default-1m",
+          "name": "Default (1M context)",
+          "tool_call": true,
+          "reasoning": true,
+          "temperature": true,
+          "attachment": true,
+          "interleaved": "reasoning",
+          "modalities": {
+            "input": ["text", "image"],
+            "output": ["text"]
+          },
+          "limit": {
+            "context": 1048576,
+            "output": 393216
+          },
+          "variants": {
+            "max": {
+              "chat_template_kwargs": {
+                "thinking": true,
+                "reasoning_effort": "max"
+              }
+            },
+            "xhigh": {
+              "chat_template_kwargs": {
+                "thinking": true,
+                "reasoning_effort": "xhigh"
+              }
+            },
+            "thinking off": {
+              "chat_template_kwargs": {
+                "thinking": false
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "permission": {
     "bash": {
       "git push *": "deny",
       "rm *": "ask",
-      "git reset *": "deny",
+      "git reset *": "ask",
       "git commit *": "ask"
     },
     "read": {
@@ -18,13 +100,6 @@
     "auto": false
   },
   "mcp": {
-    "duckduckgo": {
-      "type": "local",
-      "command": [
-        "uvx",
-        "duckduckgo-mcp-server"
-      ]
-    },
     "context7": {
       "type": "local",
       "command": [
@@ -40,6 +115,20 @@
         "-y",
         "@modelcontextprotocol/server-sequential-thinking"
       ]
+    },
+    "searxng": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "mcp-searxng"
+      ],
+      "environment": {
+        "SEARXNG_URL": "{env:SEARXNG_ENDPOINT}"
+      }
     }
-  }
+  },
+  "plugin": [
+    "opencode-parser"
+  ]
 }
