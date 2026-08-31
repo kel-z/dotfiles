@@ -1,6 +1,6 @@
 [general]
 import = [
-    "themes/themes/kanagawa_dragon.toml"
+    "themes/themes/carbonfox.toml"
 ]
 
 [font]
