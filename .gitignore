@@ -31,3 +31,10 @@ nvim/.config/nvim/lazy-lock.json
 
 # Ignore tmux plugin diffs
 tmux/.tmux/plugins/tmux-thumbs/
+
+# Ignore local backup/lock artifacts
+*.bak
+package-lock.json
+
+# Local-only agent instructions (machine-specific)
+AGENTS.md
