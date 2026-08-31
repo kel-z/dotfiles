@@ -27,6 +27,6 @@ PYEOF
 }
 
 if lid_closed; then
-    swaylock -f --image ~/.config/sway/backgrounds/rn_image_picker_lib_temp_2c0543b3-35e1-46eb-82b5-539a6aa1a753.jpg
+    swaylock -f --image ~/.config/sway/backgrounds/lock-screen.jpg
     systemctl suspend-then-hibernate
 fi
