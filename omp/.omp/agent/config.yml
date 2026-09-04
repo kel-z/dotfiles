@@ -1,0 +1,32 @@
+symbolPreset: nerd
+composer:
+  shape: borderless
+theme:
+  dark: dark-tokyo-night
+  light: light
+setupVersion: 2
+modelRoles:
+  slow: gx10/default:max
+  default: gx10/default-1m:medium
+compaction:
+  enabled: false
+tools:
+  approvalMode: write
+  approval:
+    bash: prompt
+    read: allow
+bash:
+  patterns:
+    - match: git push *
+      approval: prompt
+    - match: rm *
+      approval: prompt
+    - match: git reset *
+      approval: prompt
+    - match: git commit *
+      approval: prompt
+secrets:
+  enabled: true
+providers:
+  webSearchOrder:
+    - searxng

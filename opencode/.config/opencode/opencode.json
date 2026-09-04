@@ -85,7 +85,7 @@
   },
   "permission": {
     "bash": {
-      "git push *": "deny",
+      "git push *": "ask",
       "rm *": "ask",
       "git reset *": "ask",
       "git commit *": "ask"
