@@ -7,13 +7,12 @@ theme:
 setupVersion: 2
 modelRoles:
   slow: gx10/default:max
-  default: gx10/default-1m:medium
+  default: gx10/default:medium
 compaction:
   enabled: false
 tools:
   approvalMode: write
   approval:
-    bash: prompt
     read: allow
 bash:
   patterns:
