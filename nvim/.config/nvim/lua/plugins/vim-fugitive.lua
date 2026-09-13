@@ -13,7 +13,9 @@ return {
 		{ "<leader>gd", "<cmd>Gvdiffsplit<cr>", desc = "Git diff" },
 		{ "<leader>gD", "<cmd>Gvdiffsplit!<cr>", desc = "Git 3-way diff" },
 		{ "<leader>gw", "<cmd>Gwrite<cr>", desc = "Git write" },
-		{ "<leader>gh", "<cmd>diffget //2 | diffupdate<cr>", desc = "Git accept target" },
-		{ "<leader>gl", "<cmd>diffget //3 | diffupdate<cr>", desc = "Git accept merge" },
+		{ "<leader>gh", mode = "n", "<cmd>diffget //2 | diffupdate<cr>", desc = "Git accept target (ours)" },
+		{ "<leader>gl", mode = "n", "<cmd>diffget //3 | diffupdate<cr>", desc = "Git accept merge (theirs)" },
+		{ "<leader>gh", mode = "x", "'<,'>diffget //2 | diffupdate<cr>", desc = "Git accept target (ours)" },
+		{ "<leader>gl", mode = "x", "'<,'>diffget //3 | diffupdate<cr>", desc = "Git accept merge (theirs)" },
 	},
 }
