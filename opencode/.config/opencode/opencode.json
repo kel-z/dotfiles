@@ -97,7 +97,7 @@
     }
   },
   "compaction": {
-    "auto": false
+    "auto": true
   },
   "mcp": {
     "context7": {
@@ -129,6 +129,7 @@
     }
   },
   "plugin": [
-    "opencode-parser"
+    "opencode-parser",
+    "opencode-tokenspeed-monitor@latest"
   ]
 }
