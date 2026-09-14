@@ -56,7 +56,9 @@ exec swayidle -w \
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Lid switch (libinput convention: lid:on = lid physically CLOSED)
-# Requires logind HandleLidSwitch=ignore (/etc/systemd/logind.conf.d)
+# Display only -- logind owns suspend and clamshell detection, see
+# /etc/systemd/logind.conf.d/90-lid-clamshell.conf. sway dropped a lid:on event
+# on 2026-09-13, so nothing power-related may depend on bindswitch.
 bindswitch --reload lid:on exec on-lid-close.sh
 bindswitch --reload lid:off exec swaymsg output eDP-1 enable
 
