@@ -107,17 +107,41 @@ EOF
 `HandleLidSwitchExternalPower=ignore` keeps the laptop awake while charging. but
 logind picks the lid action once, at lid-close, and never subscribes to
 power_supply udev -- so unplugging afterwards goes unnoticed until the battery
-dies. this covers that:
+dies.
+
+this has to be **polled**, not event-driven. the EC query handler for AC
+plug/unplug on this machine (`_Q27`) aborts on an AML firmware bug
+(`AE_AML_PACKAGE_LIMIT` in `BRNS`), so no power_supply uevent is ever emitted --
+upower's own cached state goes stale too. sysfs still reads correctly on demand:
 
 ```bash
 sudo tee /usr/local/bin/lid-ac-unplug <<'EOF'
 #!/bin/bash
-# Suspend if the lid is already shut when the charger is pulled.
+# Suspend if the charger is gone while the lid is shut.
+#
+# Polled, not event-driven: this laptop's EC query handler for AC plug/unplug
+# (_Q27) aborts on an AML firmware bug (AE_AML_PACKAGE_LIMIT in BRNS), so no
+# power_supply uevent is ever emitted -- even upower's cached state goes stale.
+# sysfs still reads correctly on demand, so poll it.
+#
+# Needed because logind picks the lid action once, at lid-close, and with
+# HandleLidSwitchExternalPower=ignore an unplug afterwards goes unnoticed until
+# upowerd suspends at PercentageAction=2%.
+
+# Anything still feeding us? Not an unplug.
 for online in /sys/class/power_supply/*/online; do
     [ -r "$online" ] && [ "$(cat "$online")" = "1" ] && exit 0
 done
+
+# Clamshell: logind ignores the lid when >1 display is connected. Match it, or
+# we would suspend a docked session the moment it ran on battery.
+connected=$(grep -lx connected /sys/class/drm/card*-*/status 2>/dev/null | wc -l)
+[ "$connected" -gt 1 ] && exit 0
+
+# Ask logind, which owns the lid and tracks the switch device directly.
 [ "$(busctl get-property org.freedesktop.login1 /org/freedesktop/login1 \
      org.freedesktop.login1.Manager LidClosed)" = "b true" ] || exit 0
+
 systemctl suspend-then-hibernate
 EOF
 sudo chmod 755 /usr/local/bin/lid-ac-unplug
@@ -130,17 +154,27 @@ ConditionPathExists=/sys/class/power_supply/AC
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/lid-ac-unplug
+# Polled every 30s; without this the start/stop pair buries the journal in
+# ~8k lines a day, which is where lid bugs actually get diagnosed.
+LogLevelMax=warning
 EOF
 
-# BAT0 has no "online" attribute, so battery churn does not match this rule.
-sudo tee /etc/udev/rules.d/90-lid-ac-unplug.rules <<'EOF'
-ACTION=="change", SUBSYSTEM=="power_supply", ATTR{online}=="0", \
-  RUN+="/usr/bin/systemctl --no-block start lid-ac-unplug.service"
+sudo tee /etc/systemd/system/lid-ac-unplug.timer <<'EOF'
+[Unit]
+Description=Poll for charger unplugged while the lid is shut
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=30s
+AccuracySec=5s
+
+[Install]
+WantedBy=timers.target
 EOF
 
 sudo systemctl daemon-reload
 sudo systemctl reload systemd-logind
-sudo udevadm control --reload-rules
+sudo systemctl enable --now lid-ac-unplug.timer
 ```
 
 hibernate additionally needs `resume=` on the kernel command line pointing at the
