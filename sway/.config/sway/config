@@ -30,6 +30,10 @@ font pango:DejaVu Sans 10
 # Border configuration
 default_border pixel 1
 
+# Gaps between windows
+gaps inner 3
+smart_gaps off
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -233,8 +237,8 @@ bindsym $mod+R mode "resize"
 # Window colors (no borders):
 # class                 border  backgr. text    indicator child_border
 client.focused          $bg $bg $text $accent $bg
-client.focused_inactive $accent $accent $text $inactive $bg
-client.unfocused        $bg $bg $inactive $inactive $bg
+client.focused_inactive $accent $accent $text $bg $bg
+client.unfocused        $bg $bg $inactive $bg $bg
 client.urgent           $bg $urgent $bg $urgent $bg
 
 #
