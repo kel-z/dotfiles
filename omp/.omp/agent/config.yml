@@ -1,15 +1,17 @@
 symbolPreset: nerd
 composer:
   shape: borderless
+  tokenRate: true
 theme:
   dark: dark-tokyo-night
   light: light
 setupVersion: 2
 modelRoles:
   slow: gx10/default:max
-  default: gx10/default:medium
+  default: gx10/default
+  web: web/searxng
 compaction:
-  enabled: false
+  enabled: truae
 tools:
   approvalMode: write
   approval:
@@ -26,6 +28,35 @@ bash:
       approval: prompt
 secrets:
   enabled: true
-providers:
-  webSearchOrder:
-    - searxng
+retry:
+  fallbackChains:
+    web:
+      - web/parallel
+      - web/perplexity
+      - google/gemini-2.5-flash
+      - google-antigravity/gemini-2.5-flash
+      - anthropic/claude-haiku-4-5
+      - openai-codex/gpt-5.6-luna
+      - openai-codex/gpt-5.6
+      - openai-codex/gpt-5.5
+      - xai/grok-4.5
+      - xai-oauth/grok-4.5
+      - web/zai
+      - web/exa
+      - web/tinyfish
+      - web/jina
+      - web/kagi
+      - web/tavily
+      - web/firecrawl
+      - web/brave
+      - web/kimi
+      - web/synthetic
+      - web/ollama
+      - web/startpage
+      - web/duckduckgo
+      - web/ecosia
+      - web/google
+      - web/mojeek
+      - web/public
+hideThinkingBlock: true
+proseOnlyThinking: false
