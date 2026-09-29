@@ -38,3 +38,9 @@ package-lock.json
 
 # Local-only agent instructions (machine-specific)
 AGENTS.md
+
+# Local-only packages (machine-specific, not shared)
+jcode/
+
+# Editor tool artifacts
+*.broken-*
