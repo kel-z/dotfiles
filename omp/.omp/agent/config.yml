@@ -1,9 +1,9 @@
 symbolPreset: nerd
 composer:
-  shape: borderless
-  tokenRate: true
+  shape: band
+  tokenRate: false
 theme:
-  dark: dark-tokyo-night
+  dark: obsidian
   light: light
 setupVersion: 2
 modelRoles:
@@ -11,7 +11,7 @@ modelRoles:
   default: gx10/default
   web: web/searxng
 compaction:
-  enabled: truae
+  enabled: true
 tools:
   approvalMode: write
   approval:
@@ -28,17 +28,31 @@ bash:
       approval: prompt
 secrets:
   enabled: true
+hideThinkingBlock: true
+proseOnlyThinking: false
+defaultThinkingLevel: auto
+statusLine:
+  separator: ascii
+  preset: full
+  contextLine: annotated
+  sessionAccent: true
+  transparent: false
+  compactThinkingLevel: true
 retry:
   fallbackChains:
     web:
       - web/parallel
       - web/perplexity
-      - google/gemini-2.5-flash
+      - google-gemini-cli/gemini-2.5-flash
       - google-antigravity/gemini-2.5-flash
+      - google/gemini-2.5-flash
       - anthropic/claude-haiku-4-5
+      - openai-codex/gpt-6-luna
       - openai-codex/gpt-5.6-luna
       - openai-codex/gpt-5.6
       - openai-codex/gpt-5.5
+      - openai/gpt-6-luna
+      - openai/gpt-5.6-luna
       - xai/grok-4.5
       - xai-oauth/grok-4.5
       - web/zai
@@ -58,5 +72,8 @@ retry:
       - web/google
       - web/mojeek
       - web/public
-hideThinkingBlock: true
-proseOnlyThinking: false
+images:
+  autoResize: false
+display:
+  pinnedAgents: collapsed
+personality: default
