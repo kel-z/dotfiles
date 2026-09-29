@@ -92,8 +92,8 @@
     },
     "read": {
       "*": "allow",
-      "*.env": "deny",
-      "*.env.*": "deny"
+      "*.env": "ask",
+      "*.env.*": "ask"
     }
   },
   "compaction": {
@@ -129,7 +129,6 @@
     }
   },
   "plugin": [
-    "opencode-parser",
-    "opencode-tokenspeed-monitor@latest"
+    "@dietrichgebert/ponytail"
   ]
 }
