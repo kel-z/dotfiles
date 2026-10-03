@@ -22,9 +22,11 @@ sudo pacman -S stow neovim tmux yazi git zsh \
   swaylock swayidle wl-clipboard cliphist grim \
   brightnessctl pipewire pipewire-pulse \
   iio-sensor-proxy \
-  ttf-hack-nerd ttf-dejavu rustup
+  ttf-hack-nerd ttf-dejavu rust \
+  swaybg alacritty python3 nodejs npm unzip wget \
+  xdg-desktop-portal-wlr polkit-gnome bluez bluez-utils
 
-yay -S wvkbd-deskintl powerlevel10k kanata
+yay -S wvkbd-deskintl kanata
 ```
 
 oh-my-zsh:
@@ -35,6 +37,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+
+# oh-my-zsh writes its own ~/.zshrc — remove it before stowing zsh, or it
+# moves the stowed symlink aside and replaces your config with the template
+rm -f ~/.zshrc
 ```
 
 submodules:
@@ -60,7 +66,12 @@ stow git         # optional
 arch linux:
 
 ```bash
-stow sway waybar wlsunset wofi gtk flameshot scripts kanata
+stow sway waybar wlsunset wofi gtk flameshot scripts kanata omp
+
+# powerlevel10k — not on the AUR under this name; the zshrc expects the clone
+# at ~/powerlevel10k (macOS: brew install powerlevel10k works via the zshrc's
+# brew-prefix fallback)
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 
 # kanata
 sudo groupadd uinput
@@ -69,6 +80,25 @@ sudo tee /etc/udev/rules.d/99-uinput.rules <<< 'KERNEL=="uinput", GROUP="uinput"
 sudo udevadm control --reload-rules && sudo udevadm trigger
 # log out and back in for group membership
 ```
+
+## screen rotation
+
+`scripts/.local/bin/sway-rotate-screen.sh` needs `iio-sensor-proxy`, `python3`,
+and a running sway session. The touchscreen/stylus identifiers at the top of
+the script are **machine-specific** — set them from `swaymsg -t get_inputs`
+(Wacom device names differ per model; the defaults in this repo are from one
+machine and will likely differ from yours). Rotation lock flag: `~/.rotation_lock`.
+
+## agents (opencode · oh-my-pi · claude code)
+
+```bash
+sudo pacman -S --needed opencode bun-bin
+sudo npm install -g @oh-my-pi/pi-coding-agent
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+- `~/.omp/agent/models.yml` is machine-local (tailnet URLs, provider config) — never commit it.
+- `~/.local/bin/cc-oauth-wrapper.sh` (claude oauth) is machine-local too — not stowed.
 
 ## lid close (suspend + hibernate)
 
