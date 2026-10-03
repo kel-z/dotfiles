@@ -249,7 +249,7 @@ exec waybar
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec mako
 exec ~/.local/bin/sway-rotate-screen.sh
-exec wlsunset
+exec ~/.local/bin/wlsunset-start.sh
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 

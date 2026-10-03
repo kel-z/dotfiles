@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=$HOME/.local/bin/wlsunset-start.sh
+Exec=sh -c "$HOME/.local/bin/wlsunset-start.sh"
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
