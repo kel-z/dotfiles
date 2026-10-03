@@ -31,8 +31,8 @@ font pango:DejaVu Sans 10
 default_border pixel 1
 
 # Gaps between windows
-gaps inner 3
-smart_gaps off
+# gaps inner 3
+# smart_gaps on
 
 ### Output configuration
 #
@@ -246,6 +246,8 @@ client.urgent           $bg $urgent $bg $urgent $bg
 #
 exec kanata --cfg ~/.config/kanata/kanata.kbd
 exec waybar
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec mako
 exec ~/.local/bin/sway-rotate-screen.sh
 exec wlsunset
 exec wl-paste --type text --watch cliphist store
