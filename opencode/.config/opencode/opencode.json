@@ -37,6 +37,24 @@
                 "reasoning_effort": "xhigh"
               }
             },
+            "high": {
+              "chat_template_kwargs": {
+                "thinking": true,
+                "reasoning_effort": "max"
+              }
+            },
+            "medium": {
+              "chat_template_kwargs": {
+                "thinking": true,
+                "reasoning_effort": "xhigh"
+              }
+            },
+            "low": {
+              "chat_template_kwargs": {
+                "thinking": true,
+                "reasoning_effort": "xhigh"
+              }
+            },
             "thinking off": {
               "chat_template_kwargs": {
                 "thinking": false
@@ -68,6 +86,24 @@
               }
             },
             "xhigh": {
+              "chat_template_kwargs": {
+                "thinking": true,
+                "reasoning_effort": "xhigh"
+              }
+            },
+            "high": {
+              "chat_template_kwargs": {
+                "thinking": true,
+                "reasoning_effort": "max"
+              }
+            },
+            "medium": {
+              "chat_template_kwargs": {
+                "thinking": true,
+                "reasoning_effort": "xhigh"
+              }
+            },
+            "low": {
               "chat_template_kwargs": {
                 "thinking": true,
                 "reasoning_effort": "xhigh"
