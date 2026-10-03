@@ -44,3 +44,13 @@ jcode/
 
 # Editor tool artifacts
 *.broken-*
+
+# omp runtime state + machine-local config (stow folds ~/.omp/agent into the repo)
+omp/.omp/agent/*
+!omp/.omp/agent/config.yml
+!omp/.omp/agent/mcp.json
+omp/.omp/run/
+
+# opencode local state
+opencode/.config/opencode/cli.json
+opencode/.config/opencode/service.json
