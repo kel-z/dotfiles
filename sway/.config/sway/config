@@ -25,7 +25,7 @@ set $text #ffffff
 set $urgent #ff0000
 
 # Font configuration
-font pango:DejaVu Sans 10
+font pango:Adwaita Sans 10
 
 # Border configuration
 default_border pixel 1
@@ -75,15 +75,20 @@ input "type:touchpad" {
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
+    pointer_accel 0.5
+    scroll_factor 0.5
 }
 
 input "type:keyboard" {
     xkb_layout us
 }
 
-input "1386:20656:Wacom_Pen_and_multitouch_sensor_Pen" {
-    scroll_method "on_button_down"
-    scroll_button 331
+# Wacom AES digitizer (ThinkPad X13 Yoga Gen 3, 056a:5286).
+# Tip = left click, lower side button = BTN_STYLUS (331), upper = eraser.
+# Pen button-scroll is unsupported by libinput on Wayland (libinput#729):
+# pen drag selects; scroll with the touchscreen or per-app stylus bindings.
+input "1386:21126:Wacom_HID_5286_Pen" {
+    map_to_output eDP-1
 }
 
 
