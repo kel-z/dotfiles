@@ -8,5 +8,5 @@
 	path = tmux/.tmux/plugins/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect
 [submodule "opencode/.config/opencode/skills/stop-slop"]
-	path = opencode/.config/opencode/skills/stop-slop
+	path = agents/.agents/skills/stop-slop
 	url = https://github.com/hardikpandya/stop-slop.git
