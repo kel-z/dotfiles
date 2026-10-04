@@ -1,0 +1,34 @@
+#!/bin/bash
+# Master dispatcher for ~/.config/toggle/<name>.sh toggleables.
+# Usage: toggle                -> numbered menu (pick # to flip, empty aborts)
+#        toggle <name>         -> flip
+#        toggle <name> on|off|status
+#        toggle <N> [on|off|status]  (index = menu order, alphabetical)
+D="$HOME/.config/toggle"
+shopt -s nullglob
+entries=("$D"/*.sh)
+(( ${#entries[@]} )) || { echo "no toggleables in $D" >&2; exit 1; }
+
+# resolve target script into s, remaining args into rest
+s=; rest=()
+if [[ $# -eq 0 ]]; then
+  i=0
+  for f in "${entries[@]}"; do
+    n=${f##*/}; n=${n%.sh}
+    printf '%2d) %-14s %s\n' $((++i)) "$n" "$("$f" status >/dev/null 2>&1 && echo on || echo off)"
+  done
+  read -rp "# " n
+  [[ $n =~ ^[0-9]+$ && n -ge 1 && n -le ${#entries[@]} ]] || exit 0
+  s=${entries[n-1]}
+elif [[ $1 =~ ^[0-9]+$ ]]; then
+  [[ $1 -ge 1 && $1 -le ${#entries[@]} ]] || { echo "bad index: $1" >&2; exit 1; }
+  s=${entries[$1-1]}; rest=("${@:2}")
+else
+  s="$D/$1.sh"
+  [[ -x $s ]] || { echo "unknown toggleable: $1" >&2; exit 1; }
+  rest=("${@:2}")
+fi
+
+cmd=${rest[0]:-}
+[[ -z $cmd || $cmd == toggle ]] && cmd=$("$s" status >/dev/null 2>&1 && echo off || echo on)
+exec "$s" "$cmd"
