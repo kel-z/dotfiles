@@ -20,6 +20,7 @@ set $bg #000000
 set $fg #ffffff
 set $accent #E2232A
 set $accent_bright #ff4040
+set $accent_dark #5E1012
 set $inactive #404040
 set $text #ffffff
 set $urgent #ff0000
@@ -28,7 +29,7 @@ set $urgent #ff0000
 font pango:Adwaita Sans 10
 
 # Border configuration
-default_border pixel 1
+default_border pixel 2
 
 # Gaps between windows
 # gaps inner 3
@@ -241,7 +242,7 @@ bindsym $mod+R mode "resize"
 #
 # Window colors (no borders):
 # class                 border  backgr. text    indicator child_border
-client.focused          $bg $bg $text $accent $bg
+client.focused          $accent_dark $bg $text $accent $accent_dark
 client.focused_inactive $accent $accent $text $bg $bg
 client.unfocused        $bg $bg $inactive $bg $bg
 client.urgent           $bg $urgent $bg $urgent $bg
