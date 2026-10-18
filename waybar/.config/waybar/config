@@ -11,7 +11,7 @@
         "backlight/slider",
         "pulseaudio",
         "pulseaudio/slider",
-        "custom/mic"
+        "wireplumber#mic"
     ],
     "modules-right": [
         "temperature",
@@ -131,12 +131,12 @@
         "exec": "~/.local/bin/get-rotation-lock-status",
         "interval": 5
     },
-    "custom/mic": {
-        "format": "{}",
-        "tooltip": "Toggle microphone",
-        "on-click": "~/.local/bin/toggle-mic",
-        "exec": "~/.local/bin/get-mic-status",
-        "interval": 5
+    "wireplumber#mic": {
+        "node-type": "Audio/Source",
+        "format": "󰍬",
+        "format-muted": "󰍭",
+        "tooltip": true,
+        "on-click": "~/.local/bin/toggle-mic"
     },
     "custom/clock": {
         "format": "{}",

@@ -161,7 +161,7 @@ window#waybar {
     min-height: 30px;
 }
 
-#custom-mic {
+#wireplumber.mic {
     color: #ffffff;
     font-size: 16px;
     min-width: 40px;
