@@ -3,6 +3,10 @@ LOCK_FILE="$HOME/.rotation_lock"
 
 if [ -f "$LOCK_FILE" ]; then
     rm "$LOCK_FILE"
+    ORIENTATION=$(busctl --system get-property net.hadess.SensorProxy \
+        /net/hadess/SensorProxy net.hadess.SensorProxy AccelerometerOrientation \
+        | awk '{print $2}' | tr -d '"')
+    [ -n "$ORIENTATION" ] && "$HOME/.local/bin/sway-rotate-screen.sh" "$ORIENTATION"
     echo "Rotation unlocked"
 else
     CURRENT=$(swaymsg -t get_outputs | python3 -c "import sys, json; print(json.load(sys.stdin)[0]['transform'])")

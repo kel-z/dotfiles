@@ -54,14 +54,14 @@ rotate_screen() {
     echo "Setting orientation to: $orientation (Sway transform: $sway_transform)"
 
     # Rotate the display output
-    swaymsg output "$DISPLAY_OUTPUT" transform "$sway_transform"
+    swaymsg output "$DISPLAY_OUTPUT" transform "$sway_transform" >/dev/null
 
     # Adjust input devices
     # Sway typically handles input device mapping relative to the output,
     # so often just mapping to the output is sufficient.
     # We use map_to_output and sometimes a specific transform if needed.
-    swaymsg input "$TOUCHSCREEN_IDENTIFIER" map_to_output "$DISPLAY_OUTPUT"
-    swaymsg input "$STYLUS_IDENTIFIER" map_to_output "$DISPLAY_OUTPUT"
+    swaymsg input "$TOUCHSCREEN_IDENTIFIER" map_to_output "$DISPLAY_OUTPUT" >/dev/null
+    swaymsg input "$STYLUS_IDENTIFIER" map_to_output "$DISPLAY_OUTPUT" >/dev/null
 
     # Switch waybar to portrait or landscape config
     case "$sway_transform" in
@@ -91,6 +91,12 @@ rotate_screen() {
     #     ;;
     # esac
 }
+
+# With an orientation argument: apply it once and exit (used by toggle-rotation-lock on unlock)
+if [ $# -ge 1 ]; then
+    rotate_screen "$1"
+    exit $?
+fi
 
 # On startup, apply correct waybar config based on current display transform
 _startup_transform=$(swaymsg -t get_outputs 2>/dev/null | python3 -c "
