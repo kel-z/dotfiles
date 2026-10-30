@@ -1,0 +1,11 @@
+#!/bin/bash
+# Clear stuck mouse-button state (sway thinks a button is held -> hover acts as a
+# $mod drag, clicks do nothing). Toggling devices makes libinput emit releases.
+for t in pointer touchpad; do
+  swaymsg input "type:$t" events disabled >/dev/null
+done
+sleep 1
+for t in pointer touchpad; do
+  swaymsg input "type:$t" events enabled >/dev/null
+done
+notify-send -t 1500 'pointers reset'
