@@ -1,6 +1,6 @@
 ---
-name: Shared Browser (agents Chrome)
-description: Browser automation via the shared agents Chrome (CDP :9222). Use for ANY browser task on machines where it is set up — attach instead of launching throwaway browsers. Also use when a plain web fetch of a page returns a captcha, bot check, or access-denied page — a real browser with real cookies gets through. Companion to the playwright-cli skill, which owns command syntax.
+name: browser
+description: Use for ANY browser or web task, including web search and pages that hit a captcha or bot check. Attaches to the shared headed agents Chrome (CDP :9222) instead of launching a new browser. Load this BEFORE playwright-cli, which only provides command syntax.
 ---
 
 # Shared Browser: agents Chrome
