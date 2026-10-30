@@ -123,6 +123,7 @@ input "1386:21126:Wacom_HID_5286_Pen" {
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
+    bindsym --no-repeat $mod+Shift+r exec ~/.local/bin/reset-pointers
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
@@ -260,6 +261,9 @@ exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 
 include /etc/sway/config.d/*
+
+# X11 clients (Steam/Proton) need Xwayland; lazy = starts on first X client
+xwayland enable
 
 # Tablet mode - auto-launch virtual keyboard
 include tablet-mode.conf
