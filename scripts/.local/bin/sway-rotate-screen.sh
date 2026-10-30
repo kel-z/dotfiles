@@ -8,6 +8,17 @@ WAYBAR_MODE_FILE="$HOME/.waybar_mode"
 
 # --- DO NOT EDIT BELOW THIS LINE ---
 
+# Single instance: sway reload re-runs every `exec` line without killing the old
+# process, so stacked copies race each other's pkill waybar.
+if [ $# -eq 0 ]; then
+    mkdir -p "$XDG_RUNTIME_DIR"
+    exec 9>"$XDG_RUNTIME_DIR/sway-rotate-screen.lock"
+    if ! flock -n 9; then
+        echo "Another rotation monitor is already running, exiting"
+        exit 0
+    fi
+fi
+
 switch_waybar() {
     local mode="$1"  # "portrait" or "landscape"
     local current_mode
