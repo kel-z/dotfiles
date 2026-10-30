@@ -55,5 +55,5 @@ omp/.omp/run/
 opencode/.config/opencode/cli.json
 opencode/.config/opencode/service.json
 
-# agents browser session state (see agents skill browser)
+# agents browser session state (see agents skill shared-browser)
 .playwright-cli/

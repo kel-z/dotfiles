@@ -1,5 +1,5 @@
 ---
-name: browser
+name: shared-browser
 description: Use for ANY browser or web task, including web search and pages that hit a captcha or bot check. Attaches to the shared headed agents Chrome (CDP :9222) instead of launching a new browser. Load this BEFORE playwright-cli, which only provides command syntax.
 ---
 
