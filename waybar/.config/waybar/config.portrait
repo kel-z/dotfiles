@@ -3,7 +3,9 @@
     "position": "top",
     "height": 30,
     "spacing": 4,
-    "modules-left": [],
+    "modules-left": [
+        "sway/workspaces"
+    ],
     "modules-center": [
         "backlight",
         "backlight/slider",
@@ -17,6 +19,11 @@
         "custom/rotation-lock",
         "custom/virtkbd"
     ],
+    "sway/workspaces": {
+        "format": "{name}",
+        "format-alt": "{name}",
+        "tooltip": false
+    },
     "network": {
         "format-wifi": "{icon}  {essid}",
         "format-ethernet": "{icon}",
