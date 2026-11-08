@@ -29,7 +29,6 @@ return {
 			"query",
 			"regex",
 			"sql",
-			"tmux",
 			"toml",
 			"tsx",
 			"typescript",
