@@ -28,6 +28,7 @@ sudo pacman -S stow neovim tmux yazi git zsh \
   imv mpv chafa thunar tumbler gvfs
 
 yay -S wvkbd-deskintl kanata
+sudo npm install -g markdownlint-cli2   # nvim-lint markdown linter, not in pacman
 ```
 
 oh-my-zsh:
