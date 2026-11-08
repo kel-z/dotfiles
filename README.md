@@ -24,7 +24,8 @@ sudo pacman -S stow neovim tmux yazi git zsh \
   iio-sensor-proxy \
   ttf-hack-nerd ttf-dejavu rust \
   swaybg alacritty python3 nodejs npm unzip wget \
-  xdg-desktop-portal-wlr polkit-gnome bluez bluez-utils
+  xdg-desktop-portal-wlr polkit-gnome bluez bluez-utils \
+  imv mpv chafa thunar tumbler gvfs
 
 yay -S wvkbd-deskintl kanata
 ```
