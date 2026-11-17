@@ -16,6 +16,7 @@ Shared instance: **agents Chrome** — headed, CDP port `9222`, profile `~/.loca
    nohup google-chrome-stable --remote-debugging-port=9222 --no-first-run --no-default-browser-check --user-data-dir="$HOME/.local/share/chrome-agents" >/dev/null 2>&1 &
    for i in $(seq 30); do curl -s --max-time 2 http://localhost:9222/json/version >/dev/null && break; sleep 1; done
    ```
+   Remote headless box: `$SSH_CONNECTION` set → localhost:9222 is likely a forwarded tunnel. Port down → don't launch a local Chrome; ask the user to start the browser on their machine — an existing `-R` forward answers on its own. Logins (rule 6) happen on their screen.
 4. Attach with a task-named session — never the `default` session, other agents may be using it:
    ```sh
    playwright-cli -s=<task> attach --cdp=http://localhost:9222
