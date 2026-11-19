@@ -51,10 +51,10 @@ output * bg ~/.config/sway/backgrounds/wallpaper.jpg fill
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 300 '[ ! -e ~/.cache/no-autolock ] && swaylock -f --image ~/.config/sway/backgrounds/lock-screen.jpg' \
+         timeout 300 '[ ! -e ~/.cache/no-autolock ] && hyprlock --immediate-render' \
          timeout 600 'cat /sys/class/backlight/intel_backlight/brightness > $XDG_RUNTIME_DIR/bl && swaymsg "output * power off"' \
                resume 'swaymsg "output * power on" && brightnessctl -q set "$(cat $XDG_RUNTIME_DIR/bl)"' \
-         before-sleep '[ ! -e ~/.cache/no-autolock ] && swaylock -f --image ~/.config/sway/backgrounds/lock-screen.jpg'
+         before-sleep '[ ! -e ~/.cache/no-autolock ] && hyprlock --immediate-render'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when

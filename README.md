@@ -19,7 +19,7 @@ pacman (Arch Linux):
 sudo pacman -S stow neovim tmux yazi git zsh \
   jq ripgrep fd fzf make tree-sitter-cli \
   sway waybar wofi wlsunset flameshot \
-  swaylock swayidle wl-clipboard cliphist grim \
+  swaylock swayidle hyprlock wl-clipboard cliphist grim \
   brightnessctl pipewire pipewire-pulse \
   iio-sensor-proxy \
   ttf-hack-nerd ttf-dejavu rust \

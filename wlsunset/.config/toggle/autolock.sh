@@ -1,5 +1,5 @@
 #!/bin/bash
-# status: exit 0 = idle auto-lock (swayidle -> swaylock) enabled
+# status: exit 0 = idle auto-lock (swayidle -> hyprlock) enabled
 # Flag absence = on, so a fresh session starts unlocked-toggleable with no seeding.
 # swayidle itself is spawned by sway's exec; this only gates its lock commands.
 F="$HOME/.cache/no-autolock"
