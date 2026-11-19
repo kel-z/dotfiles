@@ -1,170 +1,142 @@
 * {
     border: none;
-    border-radius: 0;
     font-family: "Hack Nerd Font", "DejaVu Sans", sans-serif;
     font-size: 12px;
     min-height: 0;
 }
 
 window#waybar {
-    background-color: #000000;
+    background-color: rgba(24, 26, 38, 0.82);
     color: #ffffff;
+}
+
+#clock,
+#custom-clock,
+#pulseaudio,
+#pulseaudio-slider,
+#backlight,
+#backlight-slider,
+#wireplumber,
+#temperature,
+#cpu,
+#memory,
+#network,
+#battery,
+#custom-virtkbd,
+#custom-rotation-lock {
+    background-color: rgba(255, 255, 255, 0.07);
+    background-image: none;
+    border-radius: 12px;
+    margin: 4px 3px;
+    padding: 0 12px;
 }
 
 #workspaces {
+    background: none;
+    background-color: transparent;
+    background-image: none;
+    margin: 0;
+    padding: 0;
 }
 
 #workspaces button {
-    color: #404040;
-    padding: 0 10px;
-    min-width: 30px;
+    color: #8b8b95;
+    background-color: rgba(255, 255, 255, 0.06);
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 9px;
+    padding: 1px 8px;
+    margin: 4px 2px;
+    min-height: 16px;
+    min-width: 20px;
 }
 
-#workspaces button:hover {
-    background-color: #E2232A;
+#workspaces button:hover,
+#workspaces button:focus,
+#workspaces button:active,
+#workspaces button:hover:checked,
+#workspaces button:active:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+    background-image: none;
+    box-shadow: none;
+    border: none;
     color: #ffffff;
 }
 
-#workspaces button.active {
+#workspaces button.checked,
+#workspaces button.active,
+#workspaces button.focused,
+#workspaces button.checked:hover,
+#workspaces button.active:hover,
+#workspaces button.focused:hover {
     background-color: #E2232A;
-    color: #ffffff;
-}
-
-#workspaces button.focused {
-    background-color: #E2232A;
+    background-image: none;
     color: #ffffff;
 }
 
 #workspaces button.urgent {
     background-color: #ff0000;
+    background-image: none;
     color: #ffffff;
 }
 
-#pulseaudio {
-    color: #ffffff;
-    padding: 0 10px;
-}
-
-#pulseaudio.muted {
-    color: #404040;
-}
-
-#pulseaudio-slider {
-    color: #ffffff;
-    padding: 0 10px;
-    min-width: 100px;
-}
-
-#pulseaudio-slider slider {
-    min-height: 2px;
-    min-width: 2px;
-    background-color: #ffffff;
-    border-radius: 0;
-}
-
-#pulseaudio-slider trough {
-    min-height: 2px;
-    min-width: 80px;
-    border-radius: 0;
-    background-color: #404040;
-}
-
-#pulseaudio-slider highlight {
-    min-height: 2px;
-    border-radius: 0;
-    background-color: #E2232A;
-}
-
+#pulseaudio-slider,
 #backlight-slider {
-    color: #ffffff;
     padding: 0 10px;
-    min-width: 100px;
+    min-height: 6px;
+    min-width: 90px;
 }
 
+#pulseaudio-slider slider,
 #backlight-slider slider {
-    min-height: 2px;
-    min-width: 2px;
+    min-height: 14px;
+    min-width: 14px;
+    border-radius: 9999px;
     background-color: #ffffff;
-    border-radius: 0;
+    box-shadow: none;
+    margin: -4px 0;
+    padding: 0;
 }
 
+#pulseaudio-slider trough,
 #backlight-slider trough {
-    min-height: 2px;
-    min-width: 80px;
-    border-radius: 0;
-    background-color: #404040;
+    min-height: 6px;
+    min-width: 60px;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 0;
+    margin: 0;
 }
 
+#pulseaudio-slider highlight,
 #backlight-slider highlight {
-    min-height: 2px;
-    border-radius: 0;
+    min-height: 6px;
+    border-radius: 3px;
     background-color: #E2232A;
 }
 
-#cpu {
-    color: #ffffff;
-    padding: 0 15px;
-}
-
-#memory {
-    color: #ffffff;
-    padding: 0 15px;
-}
-
-#battery {
-    color: #ffffff;
-    padding: 0 15px;
+#pulseaudio.muted,
+#network.disconnected {
+    color: #6a6a72;
 }
 
 #battery.warning {
     color: #ffff00;
 }
 
-#battery.critical {
-    color: #ff0000;
-}
-
-#network {
-    color: #ffffff;
-    padding: 0 15px;
-}
-
-#clock {
-    color: #ffffff;
-    padding: 0 15px;
-}
-
-#temperature {
-    color: #ffffff;
-    padding: 0 15px;
-}
-
+#battery.critical,
 #temperature.critical {
     color: #E2232A;
 }
 
-#custom-virtkbd {
-    color: #ffffff;
-    padding: 0 12px;
-    margin: 0 2px;
-    font-size: 16px;
-    min-width: 40px;
-    min-height: 30px;
+#clock,
+#custom-clock {
+    font-weight: normal;
 }
 
-#custom-rotation-lock {
-    color: #ffffff;
-    padding: 0 12px;
-    margin: 0 2px;
-    font-size: 16px;
-    min-width: 40px;
-    min-height: 30px;
+#custom-virtkbd,
+#custom-rotation-lock,
+#wireplumber {
+    font-size: 15px;
 }
-
-#wireplumber.mic {
-    color: #ffffff;
-    font-size: 16px;
-    min-width: 40px;
-    min-height: 30px;
-}
-
