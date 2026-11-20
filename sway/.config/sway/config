@@ -13,7 +13,7 @@ set $right Right
 set $term alacritty
 #
 # Your preferred application launcher
-set $menu wofi --show drun --style ~/.config/wofi/style.css
+set $menu wofi --show drun --prompt Apps
 
 # Dark theme colors
 set $bg #000000
@@ -30,6 +30,7 @@ font pango:Adwaita Sans 10
 
 # Border configuration
 default_border pixel 2
+default_floating_border pixel 2
 
 # Gaps between windows
 # gaps inner 3
@@ -112,7 +113,7 @@ input "1386:21126:Wacom_HID_5286_Pen" {
     bindsym $mod+d exec $menu
 
     # Clipboard history picker
-    bindsym $mod+Shift+v exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
+    bindsym $mod+Shift+v exec cliphist list | wofi -dmenu -p Clipboard | cliphist decode | wl-copy
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
